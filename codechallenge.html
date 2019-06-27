@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    .myHeading {
+        color: red;
+    }
+</style>
+
+<body>
+
+    <h1>This is the title of the page</h1>
+    <h2>This is the subtitle of the page</h2>
+
+    <hr>
+
+    <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+    </ul>
+
+    <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+    </ul>
+
+    <a href="strive.school">This link goes to Strive School</a>
+
+    <div>
+        <p>This text is just for the exercise</p>
+    </div>
+
+    <p>And this text is just for the exercise too!</p>
+
+    <script>
+        /* EXERCISE 1
+           Write a function to change the Title of the page in something else
+           */
+        function changeTitle() {
+            document.title = "Best Javascript Title"
+        }
+
+        changeTitle();
+
+
+        /* EXERCISE 2
+       Write a function to change the class of the title of the page in "myHeading"
+       */
+        function changeHeading() {
+            // select the h1 tag with getgetElementsByTagName ('h1') and [0] is the actual text store it in a variable
+            var element = document.getElementsByTagName('h1')[0];
+            // add the class name to the h1>text
+            element.className = 'myHeading';
+        }
+        changeHeading();
+
+        /* EXERCISE 3
+        Write a function to change the text of only the p which are child of a div
+        */
+
+        function changeChildElement() {
+            var elDiv = document.getElementsByTagName("div")[0];
+            elDiv.innerHTML = "Text has been changed!";
+        }
+        changeChildElement();
+
+        /* EXERCISE 4
+        Write a function to change the destination of every link to https://www.google.com
+        */
+        function changeAttribute() {
+            var att = document.getElementsByTagName("a")[0];
+            var newAtt = att.setAttribute("href", "https://www.google.com");
+        }
+        changeAttribute();
+
+        /* EXERCISE 5
+       Write a function to add a new item ONLY to the second list
+       */
+
+        function addToTheList() {
+            // create an element 
+            var newEl = document.createElement('li');
+            // Create text node
+            var newText = document.createTextNode('4rd');
+            //Attach the new text node to to the element
+            newEl.appendChild(newText);
+            // set the postion for the new element
+            var newPosition = document.getElementById('secondList');
+            // insert the new element
+            newPosition.appendChild(newEl);
+        }
+        addToTheList();
+
+
+        /* EXERCISE 6
+     Write a function to add a second paragraph to the div
+      */
+
+        function addParagraph() {
+            // create an element 
+            var elNewPara = document.createElement('p');
+            // Create text node
+            var paraText = document.createTextNode('New Paragraph');
+            //Attach the new text node to to the element
+            elNewPara.appendChild(paraText);
+
+            // set the postion for the new element
+            var paraPosition = document.getElementsByTagName('div')[0];
+
+            // insert the new element
+            paraPosition.appendChild(elNewPara);
+        }
+        addParagraph();
+
+
+        /* EXERCISE 7
+       Write a function to make the first UL disappear
+        */
+        function ulDisappear() {
+            // get element
+            var el = document.getElementById('firstList');
+            // remove element
+            // el.remove();
+            // hiding it with css
+            // el.style.display = 'none';
+        }
+
+        ulDisappear();
+
+        /* EXERCISE 8
+        Write a function to make the background of every UL green
+        */
+        function greenBackground() {
+            var elGet = document.getElementsByTagName('ul');
+            for (var i = 0; i < elGet.length; i++) {
+                console.log(elGet[i]);
+                elGet[i].style.backgroundColor = 'green';
+            }
+        }
+        greenBackground();
+
+        /* EXERCISE 9
+      Make the heading of the page changing color every time the user clicks on it
+        */
+        var elTag = document.getElementsByTagName("h1")[0];
+
+        elTag.addEventListener("click", function () {
+            elTag.style.color = 'yellow';
+        });
+
+
+
+        /* EXERCISE 10
+      Create a new welcome alert message when the page successfully loads
+        */
+
+        window.onload = function () {
+            alert('welcome!');
+        };
+
+    </script>
+
+</body>
+
+</html>

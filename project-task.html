@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 2.0;
+        color: rgb(12, 5, 54);
+        background-image: linear-gradient(#e4ece2, #83aa9d);
+    }
+
+    .container {
+        height: 85vh;
+        margin: 50px auto;
+    }
+
+    .main {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    h1 {
+
+        background: #83aa9d;
+        color: white;
+        margin: 0;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    p {
+        font-weight: 400;
+    }
+
+    #pencil {
+        float: right;
+    }
+
+    .sort-btn {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 4rem 0;
+    }
+
+    li {
+        background: #fff;
+        margin-bottom: 5px;
+        height: 40px;
+        line-height: 40px;
+        box-shadow: 10px 10px 29px -12px rgba(0, 0, 0, 0.342);
+        position: relative;
+    }
+
+    li:nth-child(2n) {
+        background: #81eff346;
+    }
+
+    span.delete {
+        background: #f38174;
+        height: 40px;
+        text-align: center;
+        color: white;
+        width: 0;
+        display: inline-block;
+        transition: 0.3s linear;
+        opacity: 0;
+        position: absolute;
+        right: 0%;
+        cursor: pointer;
+    }
+
+    li:hover span.delete {
+        width: 40px;
+        transition: 0.3s linear;
+        opacity: 1.0;
+    }
+
+    input {
+        font-size: 18px;
+        color: #78c6fa;
+        background-color: #f7f7f7;
+        width: 100%;
+        padding: 13px 13px 13px 20px;
+        box-sizing: border-box;
+        border: 3px solid rgba(0, 0, 0, 0);
+        box-shadow: 10px 10px 29px -12px rgba(0, 0, 0, 0.342);
+    }
+
+    input[type="submit"] {
+        color: black;
+        margin-top: 1rem;
+        border-radius: 25px;
+        box-shadow: 10px 10px 29px -12px rgba(0, 0, 0, 0.342);
+        cursor: pointer;
+    }
+
+    .btn-action {
+        color: rgb(12, 5, 54);
+        border: none;
+        padding: 10px 15px;
+        margin: 0 5px;
+        /* border-radius: 25px; */
+        box-shadow: 10px 10px 29px -12px rgba(0, 0, 0, 0.342);
+        cursor: pointer;
+    }
+
+    input:focus {
+        background: white;
+        border: 3px solid #81c5f3;
+        outline: none;
+    }
+
+    #footer {
+        position: absolute;
+        top: 90%;
+        color: rgb(34, 33, 33);
+        text-align: center;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <section class="main">
+            <!-- heading -->
+            <h1>Keep your life in sync <span id="pencil">&#9998;</span></h1>
+
+            <form action="" id="addTask">
+                <!-- input field -->
+                <input id="taskInput" type="text" placeholder="Add a new task - press enter">
+                <input type="submit" class="btn btn-dark" value="Submit">
+
+                <ul id="MyTasks">
+                    <li>Shooping<span class="delete">X</span></li>
+                    <li>Tennis Session<span class="delete">X</span></li>
+                    <li>Visit Grandma<span class="delete">X</span></li>
+                    <li>Buy groceries<span class="delete">X</span></li>
+                </ul>
+            </form>
+
+            <p>Sort by: </p>
+            <div class="sort-btn">
+                <input type="text" id="filter" class="btn-action" placeholder="Search taks...">
+
+            </div>
+
+            <footer id="footer">Created By Yari Andres</footer>
+        </section>
+    </div>
+
+    <script>
+
+        var form = document.getElementById('addTask');
+        var itemList = document.getElementById('MyTasks');
+        var filter = document.getElementById('filter');
+
+
+        // EVETS
+        // get the form event
+        form.addEventListener('submit', addItem);
+        // listen for delete event
+        itemList.addEventListener('click', removeItem);
+        // filter event
+        filter.addEventListener('keyup', filterItems);
+
+
+
+        // add item  function
+        function addItem(event) {
+            event.preventDefault();
+
+            // get input value
+            var newItem = document.getElementById('taskInput').value;
+
+            // /create a new li
+            var li = document.createElement('li');
+
+            // create the span X 
+            var deleteBtn = document.createElement('span');
+
+            // create the X textNode
+            var textNode = document.createTextNode('X');
+
+            // append X to X
+            deleteBtn.appendChild(textNode);
+
+            // add the css class
+            deleteBtn.className = 'delete';
+
+            // append X to li
+            li.appendChild(deleteBtn);
+
+            // add text node with input value
+            li.appendChild(document.createTextNode(newItem));
+
+            // append the full li list
+            itemList.appendChild(li);
+
+        }
+
+        // remmove item function
+        function removeItem(event) {
+            if (event.target.classList.contains('delete')) {
+                if (confirm('Are you sure?')) {
+                    var li = event.target.parentElement;
+                    itemList.removeChild(li);
+                }
+            }
+        }
+
+        // filter items
+        function filterItems(event) {
+            var text = event.target.value.toLowerCase();
+
+            var items = itemList.getElementsByTagName('li');
+
+            Array.from(items).forEach(function (item) {
+                var itemName = item.firstChild.textContent;
+                if (itemName.toLowerCase().indexOf(text) != -1) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homework 26-06</title>
+</head>
+
+<style>
+    body {
+        color: rgb(9, 41, 70);
+        font-family: monospace;
+        text-align: center;
+    }
+
+    h1 {
+        text-transform: uppercase;
+    }
+
+    img {
+        max-width: 200px;
+        max-height: auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        margin: 0 auto;
+    }
+
+    table,
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    .large {
+        max-width: 700px;
+    }
+
+    .small {
+        max-width: 200px;
+    }
+</style>
+
+<body>
+    <!--
+            You have been assigned to the creation of a Smartphone Shop Website.
+            The shop is just a showcase of the products of the shop with some extra informations.
+            No shopping cart / checkout features are required.   
+           
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            EX8.: 
+            Add a "magnifier function" to the table.
+            When the user mouse goes on a cell (not the image one) the font size must increase.
+            HINT use mouseenter / mouseleave events
+    
+        -->
+
+
+    <!-- EX1.:
+        Add H1 title with the name of the shop -->
+    <h1>welcome to cheap useless Smartphone shop</h1>
+
+    <!-- EX2.:
+    Add a TABLE with the top 5 products of the shop -->
+
+    <!-- EX3.:
+    Add images to the table for each product -->
+
+    <!-- EX4.:
+    Add Map to the shop -->
+
+    <!-- EX5.:
+    Add the links to Amazon products for each item in the table -->
+
+    <p>Top 5 useless phones: </p>
+    <table>
+        <tr>
+            <!-- table header  -->
+            <th>Product Name</th>
+            <th>Product image</th>
+            <th>Buy from </th>
+        </tr>
+
+        <!-- table rows  -->
+        <tr>
+            <td>Iphone</td>
+            <td><img class="img"
+                    src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_asset%2Ffile%2F7774997%2F3_iphone_3gs_2009.0.jpg&f=1"
+                    alt="iphone1"></td>
+            <td><a href="www.amazon.com">Amazon Listing</a></td>
+        </tr>
+        <tr>
+            <td>Samsung</td>
+            <td><img class="img"
+                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.phonebunch.com%2Fphone-pictures%2Fsamsung_galaxy_star_duos_s5282-846%2520(1).jpg&f=1"
+                    alt="samsung 1"></td>
+            <td><a href="www.amazon.com">Amazon Listing</a></td>
+        </tr>
+        <tr>
+            <td>Sony</td>
+            <td><img class="img"
+                    src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2F87%2F06%2F308706ac5df5ab02cd36132e8aff6938.jpg&f=1"
+                    alt="Sony 1"></td>
+            <td><a href="www.amazon.com">Amazon Listing</a></td>
+        </tr>
+        <tr>
+            <td>Motorola</td>
+            <td><img class="img"
+                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fi.ytimg.com%2Fvi%2FxP8P36cL9kw%2Fhqdefault.jpg&f=1"
+                    alt="motorola 1"></td>
+            <td><a href="www.amazon.com">Amazon Listing</a></td>
+        </tr>
+        <tr>
+            <td>Vodafone</td>
+            <td><img class="img"
+                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia.gizmodo.co.uk%2Fwp-content%2Fuploads%2F2015%2F01%2F30YearsOfMobileTech-FirstPhones.jpg&f=1"
+                    alt="Vodafone 1"></td>
+            <td><a href="www.amazon.com">Amazon Listing</a></td>
+        </tr>
+    </table>
+
+    <!-- EX7.:
+        Add a message board where the user can type a message in it (only client side) -->
+
+    <p>Do you have a question?</p>
+
+    <input type="text" placeholder="Enter your name">
+    <br> <br>
+    <textarea name="textarea" id="" cols="30" rows="10" placeholder="This crap dont work..."></textarea>
+
+
+
+    <p>Visit us here: </p>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19466.40764407977!2d16.932588!3d52.4193444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2spl!4v1561563306480!5m2!1sen!2spl"
+        width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
+    </iframe>
+
+    <!-- EX6.:
+    Add a footer with the address and the name of the shop -->
+    <footer>
+        <p>Dont buy this CRAP phone LTD</p>
+        <small>39 Give me your cash</small>
+        <small>Poland</small>
+    </footer>
+
+    <script>
+        // get tag name img
+        var item = document.getElementsByClassName("img");
+
+        // convert an HTMLCollection item to an Array
+        // var item += Array.prototype.slice.call(item);
+
+        item.addEventListener("click", func, false)
+
+
+        function func() {
+            console.log(item);
+            // arr[i].setAttribute("class", "large");
+        }
+
+
+        // item.addEventListener("mouseout", func1, false);
+        // function func1() {
+        //     item.setAttribute("class", "small");
+        // }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

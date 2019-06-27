@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Fav Barber Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        font-family: 'Lato', sans-serif;
+        background: #654ea3;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #eaafc8, #654ea3);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+
+    .wrapper {
+        margin: 0 auto;
+        width: 80%;
+        background: #fff;
+        border-radius: 4px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    h1 {
+        color: blue;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    p,
+    h2 {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .location {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .location-address {
+        padding-right: 2rem;
+    }
+
+    .contact-form {
+        text-align: center;
+        padding: 2rem;
+
+    }
+
+    label {
+        color: rgb(1, 0, 54);
+        display: block;
+        margin: 10px 0 10px 0;
+        font-size: 1rem;
+    }
+
+    input[type='text'],
+    input[type='password'] {
+        background-color: rgb(255, 255, 255);
+        color: #666;
+        font-size: 1rem;
+        width: 30%;
+        padding: 4px 6px;
+        border: 1px solid #999;
+        border-radius: 4px;
+    }
+
+    input[type='text']:focus,
+    input[type='password']:focus,
+    textarea:focus {
+        border: 1px solid rgb(231, 231, 231);
+        background-color: #fff;
+        outline: none;
+    }
+
+    input[type='submit'],
+    a.add {
+
+        background-color: #cb6868;
+        color: #f3dad1;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 10px;
+        margin-top: 10px;
+        display: inline-block;
+        font-size: 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+
+    }
+
+    input[type='submit']:hover,
+    a.add:hover {
+        background-color: #d75359;
+        color: #f3dad1;
+        cursor: pointer;
+        box-shadow: none;
+        top: 1px;
+    }
+
+    #feedback,
+    #termsHint {
+        color: #fff;
+        background-image: url('img/warning.png');
+        background-repeat: no-repeat;
+        background-position: 2px 14px;
+        padding: 10px 0 0 22px;
+    }
+
+    #feedback.warning {
+        background-image: url('img/warning.png');
+    }
+
+    #feedback.tip {
+        background-image: url('img/tip.png');
+    }
+
+
+
+    /* EXERCISE 2:  
+               Style h1 color, alignment, size as you like it;
+               Style h2 color, alignment, size as you like it;
+               Style page background color as you like it
+               [EXTRA]
+               Set a red-ish color when the input of the forms are invalid
+               Set a ok-ish color when the input of the forms are valid
+            */
+</style>
+
+<body>
+
+    <!--
+    ASSIGNMENT RULES
+    - The solution must be pushed to the repository and be available for the tutors by the end of the day
+    - You can ask for tutor's help
+    - You can google / use StackOverflow BUT we suggest you to use just the material provided
+    - To test the page, just open it with your default browser.
+    
+    ASSIGNMENT TOPIC
+    You are building a Barbers' Shop website. 
+    The website is quite simple, it should include the basic information about the Shop (Name, address etc)
+    and include a form to get reservation.
+    
+    Note: the form should just be implemented in HTML + CSS, no extra code needed.
+    -->
+
+
+
+    <!-- EXERCISE 1:
+        Specify the title, the charset (UTF-8) and the viewport of the page.
+        -->
+
+    <!-- EXERCISE 3:
+        Write the main title of the barber shop and a smaller claim.
+    -->
+    <div class="wrapper">
+        <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.vA_TKNMDJ6G6IGwuhOqR1AHaGW%26pid%3DApi&f=1"
+            alt="">
+        <h1>Welcome to Big Cuts, The best cuts in town</h1>
+        <h2>A one stop shop to tame that presious facial hair</h2>
+
+        <!-- EXERCISE 4: 
+        Write a section in which you explain a current promotion
+    -->
+        <p>Cheap and affordable Baber shop that cares about your facial needs!</p>
+
+        <!-- EXERCISE 5: 
+        Write a section with the address of the shop.
+        [OPTIONAL] Link this address to Google Maps page.
+    -->
+        <section class="location">
+            <address>
+                <div class="location-address">
+                    Big Cuts: <br>
+                    <a href="https://goo.gl/maps/ptbxe31PAgcVyhsR8">
+                        Działyńskich 3 <br>
+                        Poznań, Poland<br>
+                        61-709
+                    </a>
+                </div>
+
+            </address>
+            <div class="map-location">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19466.40764407977!2d16.932588!3d52.4193444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b484b733bdf%3A0x1bd342ad499c2224!2zRHppYcWCecWEc2tpY2ggMywgNjEtNzM4IFBvem5hxYQ!5e0!3m2!1sen!2spl!4v1561114026864!5m2!1sen!2spl"
+                    width="400" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- EXERCISE 6: 
+        Write a "Leave Email" form. 
+        The form must have a field for the Email and a button for the submission of the field itself.
+        The field must accept ONLY valid emails (empty email is not a valid email).
+
+        [OPTIONAL] On submit click, console log the value of the email
+    -->
+        <senction class="contact-form">
+            <h2>Contact us</h2>
+            <form method="post" action="http://www.example.org/register">
+
+                <label for="username">Name: </label>
+                <input type="text" id="username" />
+                <div id="feedback"></div>
+
+                <label for="password">Email: </label>
+                <input type="password" id="password" />
+                <br>
+                <input type="submit" value="Send" />
+
+            </form>
+        </senction>
+
+        <!-- EXERCISE 7: 
+                Create an "book haircut" form.
+                The form must have:
+                - phone number
+                - date
+                - name
+    
+                Phone number and date are mandatory, the name is optional.
+                Create a form with a submit button, ready to be used in a real context.
+                Style it as you like it.
+                [OPTIONAL] On submit click, console log an object containing Phone Number, Date and Name.
+            -->
+
+        <!-- EXERCISE 8: 
+                Place here a footer including:
+                - Name of the Barber Shop
+                - Address
+                - Phone Number
+                - Email (should be a clickable link)
+            -->
+    </div>
+    <!-- wrapper end -->
+
+    <script>
+        window.onload = function () {
+            console.log("Page loaded!");
+
+            /* EXERCISE 9:
+                Write on console the size (height and width) of the current browser window
+                Write on console the size (height and width) of the current page window
+            */
+        };
+
+        var elUsername = document.getElementById('username');  // Get username input
+        console.log(elUsername);
+        var elMsg = document.getElementById('feedback'); // Get feedback element
+        console.log(elMsg);
+        function checkUsername(minLength) {  // Declare function
+            if (elUsername.value.length < minLength) { // if user name is too short 
+                elMsg.textContent = 'Username must be ' + minLength + ' charecters more';
+            } else { // Otherwise
+                elMsg.innerHTML = ''; // Clear message
+            }
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
