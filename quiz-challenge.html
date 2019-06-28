@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!--
+        QUIZ GAME!
+
+        RULES:
+        / The player must guess correctly a certain amount of questions
+        / Each correct answer gives him one point
+        / Answers could be “multiple” or “true/false”
+        / At the end of the game, the user must know his total score
+
+        QUESTIONS:
+        / You can get them from this URL ( http://bit.ly/strive_QUIZZ ) or you can write your own
+        / Could be multiple of boolean (true / false)
+        / [EXTRA] Show if the answer was wrong or correct after clicking
+        / [EXTRA] Present them “one a time”
+
+        HINTS:
+        / Keep a global variable “score” for the score
+        / Keep a variable “questionNumber” for the “question” the user is answering
+        / When “questionNumber” is bigger then the available questions, present the score
+        / Start working with the question saved in a variable, and then include AJAX etc
+        / Start with the easier version and THEN implement the “EXTRAs”
+        / Please debug everything / try it on the console to be sure of what to expect from your code
+
+        EXTRA:
+        / Show if the answer was wrong or correct after clicking
+        / Present questions one a time
+        / Let the user select difficulty and number of questions (you can get q/a from https://opentdb.com/api.php?amount=10&category=18&difficulty=easy modifying amount and difficulty)
+
+    -->
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Simple MEGA Quiz</h1>
+            <p>Test your knowledge</p>
+        </header>
+
+        <section>
+            <form name="quizForm" onsubmit="return submitAnswers()" id="quiz">
+                <!-- <p></p>
+                <h3></h3>
+
+                <input type="radio" name="q1" value="a" id="q1a">Central Processing Unit<br>
+                <input type="radio" name="q1" value="b" id="q1b">Central Process Unit<br>
+                <input type="radio" name="q1" value="b" id="q1b">Computer Personal Unit<br>
+                <input type="radio" name="q1" value="b" id="q1b">Central Processor Unit<br>
+
+                <p></p>
+                <h3></h3>
+
+                <input type="radio" name="q2" value="a" id="q2a">Public<br>
+                <input type="radio" name="q2" value="b" id="q2b">Static<br>
+                <input type="radio" name="q2" value="c" id="q2c">Final<br>
+                <input type="radio" name="q2" value="d" id="q2d">Private<br>
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q3" value="a" id="q3a"><br>
+                <input type="radio" name="q3" value="b" id="q3b"><br>
+                <input type="radio" name="q3" value="c" id="q3c"><br>
+                <input type="radio" name="q3" value="d" id="q3d">
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q4" value="a" id="q4a"><br>
+                <input type="radio" name="q4" value="b" id="q4b">
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q5" value="a" id="q5a"><br>
+                <input type="radio" name="q5" value="b" id="q5b"><br>
+                <input type="radio" name="q5" value="c" id="q5c"><br>
+                <input type="radio" name="q5" value="d" id="q5d">
+                <br><br>
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q6" value="a" id="q6a"><br>
+                <input type="radio" name="q6" value="b" id="q6b"><br>
+                <input type="radio" name="q6" value="c" id="q6c"><br>
+                <input type="radio" name="q6" value="d" id="q6d">
+                <br><br>
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q7" value="a" id="q7a"><br>
+                <input type="radio" name="q7" value="b" id="q7b"><br>
+                <input type="radio" name="q7" value="c" id="q7c"><br>
+                <input type="radio" name="q7" value="d" id="q7d">
+                <br><br>
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q8" value="a" id="q8a"><br>
+                <input type="radio" name="q8" value="b" id="q8b"><br>
+                <input type="radio" name="q8" value="c" id="q8c"><br>
+                <input type="radio" name="q8" value="d" id="q8d">
+                <br><br>
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q9" value="a" id="q9a"><br>
+                <input type="radio" name="q9" value="b" id="q9b"><br>
+                <input type="radio" name="q9" value="c" id="q9c"><br>
+                <input type="radio" name="q9" value="d" id="q9d">
+
+                <p></p>
+                <h3></h3>
+                <input type="radio" name="q10" value="a" id="q10a"><br>
+                <input type="radio" name="q10" value="b" id="q10b"><br>
+                <input type="radio" name="q10" value="c" id="q10c"><br>
+                <input type="radio" name="q10" value="d" id="q10d">
+                <br><br> -->
+                <input type="submit" value="Submit answer">
+            </form>
+        </section>
+
+        <div id="results"></div>
+
+        <footer>
+            <p>Copyright &copy; 2014, All Rights reserved. Created By Yari Herrera</p>
+        </footer>
+
+    </div>
+
+    <script>
+        var questions =
+            [
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "What does CPU stand for?",
+                    "correct_answer": "Central Processing Unit",
+                    "incorrect_answers":
+                        [
+                            "Central Process Unit",
+                            "Computer Personal Unit",
+                            "Central Processor Unit"
+                        ]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+                    "correct_answer": "Final",
+                    "incorrect_answers":
+                        [
+                            "Static",
+                            "Private",
+                            "Public"
+                        ]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "boolean",
+                    "difficulty": "easy",
+                    "question": "The logo for Snapchat is a Bell.",
+                    "correct_answer": "False",
+                    "incorrect_answers": ["True"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "boolean",
+                    "difficulty": "easy",
+                    "question": "Pointers were not used in the original C programming language; they were added later on in C++.", "correct_answer": "False",
+                    "incorrect_answers": ["True"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "What is the most preferred image format used for logos in the Wikimedia database?",
+                    "correct_answer":
+                        ".svg", "incorrect_answers": [".png", ".jpeg", ".gif"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "In web design, what does CSS stand for?",
+                    "correct_answer": "Cascading Style Sheet",
+                    "incorrect_answers": ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "What is the code name for the mobile operating system Android 7.0?",
+                    "correct_answer": "Nougat",
+                    "incorrect_answers": ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "On Twitter, what is the character limit for a Tweet?", "correct_answer":
+                        "140", "incorrect_answers": ["120", "160", "100"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "boolean", "difficulty":
+                        "easy", "question": "Linux was first created as an alternative to Windows XP.",
+                    "correct_answer": "False",
+                    "incorrect_answers": ["True"]
+                },
+                {
+                    "category": "Science: Computers",
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "Which programming language shares its name with an island in Indonesia?",
+                    "correct_answer": "Java",
+                    "incorrect_answers": ["Python", "C", "Jakarta"]
+                }
+            ];
+
+
+        window.onload = function () {
+
+            // get the form 
+            var form = document.getElementById('quiz');
+            // loop throu the the object
+            for (var i = 0; i < questions.length; i++) {
+
+                // DISPLAYING THE CATEGOR
+                // create a <p> tag for displaying the category
+                var pTag = document.createElement('p');
+
+                // creatting the text node for the <p> tag 
+                categoryText = document.createTextNode('Category: ' + questions[i].category);
+
+                // append the category text to the <p> tag
+                pTag.appendChild(categoryText);
+
+
+                // DISPALYING THE QUESTION
+                // creating a <h1> tag
+                var hTag = document.createElement('h1');
+
+                // creatting the text node for the <h1> tag 
+                questionText = document.createTextNode('Question: ' + questions[i].question);
+
+                // append the question node text to the <h1> tag
+                hTag.appendChild(questionText);
+
+                // create radio inputs
+                var optionOne = document.createElement('input');
+
+                //create inputs labels
+                var correctAnswer = document.createElement('label');
+
+                // set the label text
+                labelText = document.createTextNode(questions[i].correct_answer);
+                correctAnswer.appendChild(labelText);
+
+                // CREATE A HELPER FUNCTION TO SET ATTRIBUTES TO THE RADIO TYPE INPUTs
+                function setAttributes(el, attribute) {
+                    for (var key in attribute) {
+                        el.setAttribute(key, attribute[key]);
+                    }
+                }
+
+                setAttributes(correctAnswer, {
+                    "for": "q1a"
+                });
+
+                setAttributes(optionOne, {
+                    "type": "radio",
+                    "name": "q1",
+                    "value": "a",
+                    "id": "q1a"
+                });
+
+                //append and display the newly created <p> on the page
+                form.appendChild(pTag);
+                // append and display the newly created <h1> on the page
+                form.appendChild(hTag);
+
+                form.appendChild(optionOne);
+                form.appendChild(correctAnswer);
+
+
+
+
+            }
+
+            // console.log(questions[3].incorrect_answers)
+
+            var incorrectAnswers = questions.incorrect_answers;
+
+            for (var i = 0; i < incorrectAnswers.length; i++) {
+
+                var optionTwo = document.createElement('input');
+                console.log(optionTwo)
+
+            }
+
+        }
+
+        //IF YOU ARE DISPLAYING ALL THE QUESTIONS TOGETHER: 
+
+            //HINT: for each question, create a container with the "question"
+            //create a radio button https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio with, as option the both the correct answer and the incorrect answers
+            //when EVERY question has an answer (google for how to get a value from a radio button with JS)
+
+            //IF YOU ARE DISPLAYING ONE QUESTION AT A TIME
+            //Display first question with a title + radio button
+            //when the user select the answer, pick the next question and remove this from the page after added in a varible the users' choice.
+
+
+         //HOW TO calculate the result
+         //You can do it in 2 ways: 
+         //If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
+         //If you are presenting one question at a time, just add one point or not to the user score if the selected answer === correct_answer
+    </script>
+</body>
+
+</html>

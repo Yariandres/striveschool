@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: #70e1f5;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #fff9f9, #f0ffed);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        width: 60%;
+        background-color: #000027;
+        margin: 20px auto;
+        overflow: auto;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    header {
+        text-align: center;
+        border-bottom: #fff dashed 1px;
+    }
+
+    header h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    header p {
+        padding: 0;
+        margin-top: 5px;
+        color: rgb(255, 255, 255);
+    }
+
+    section {
+        min-height: 400px;
+    }
+
+    input[type='submit'] {
+        background: #f87538;
+        border: 0;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 2px;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    #results h3 {
+        background-color: #ffd194;
+        padding: 10px;
+        margin: 10px 0;
+
+    }
+
+    #results span {
+        color: #000;
+        font-weight: 800;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Simple Computers Science Quiz</h1>
+            <p>Test your knowledge in <strong>Computers Science</strong></p>
+        </header>
+
+        <section>
+            <form name="quizForm" onsubmit="return submitAnswers()">
+
+                <!-- QUESTION 1 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+
+                <h3><strong>Question :</strong> What does CPU stand for?</h3>
+                <input type="radio" name="q1" value="a" id="q1a">a. Central Processing Unit<br><!-- correct_answer -->
+                <input type="radio" name="q1" value="b" id="q1b">b. Central Process Unit<br>
+                <input type="radio" name="q1" value="c" id="q1c">c. Computer Personal Unit<br>
+                <input type="radio" name="q1" value="d" id="q1d">d. Central Processor Unit
+                <hr>
+
+                <!-- QUESTION 2 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question </strong> In the programming language Java, which of these keywords would you put
+                    on a variable to make sure it doesn't get modified?</h3>
+
+                <input type="radio" name="q2" value="a" id="q2a">a. Static<br>
+                <input type="radio" name="q2" value="b" id="q2b">b. Private<br>
+                <input type="radio" name="q2" value="c" id="q2c">c. type.<br>
+                <input type="radio" name="q2" value="d" id="q2d">d. Public
+                <!-- correct_answer -->
+                <hr>
+
+                <!-- QUESTION 3 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>True or False</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> The logo for Snapchat is a Bell.</h3>
+
+                <input type="radio" name="q3" value="a" id="q3a">a. True<br> <!-- correct_answer -->
+                <input type="radio" name="q3" value="b" id="q3b">b. False<br>
+
+                <!-- QUESTION 4 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>True or False</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+
+                <h3><strong>Question :</strong> Pointers were not used in the original C programming language; they were
+                    added later on in C++.</h3>
+                <input type="radio" name="q4" value="a" id="q4a">b. True<br>
+                <input type="radio" name="q4" value="b" id="q4b">c. False
+                <!-- correct_answer -->
+                <hr>
+
+                <!-- QUESTION 5 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> What is the most preferred image format used for logos in the Wikimedia
+                    database?</h3>
+                <input type="radio" name="q5" value="a" id="q5a">a. .png<br>
+                <input type="radio" name="q5" value="b" id="q5b">b. .svg<br><!-- correct_answer -->
+                <input type="radio" name="q5" value="c" id="q5c">c. .jpeg<br>
+                <input type="radio" name="q5" value="d" id="q5d">d. .gif
+                <hr>
+
+                <!-- QUESTION 6 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> In web design, what does CSS stand for?</h3>
+                <input type="radio" name="q6" value="a" id="q6a">a. Corrective Style Sheet<br>
+                <input type="radio" name="q6" value="b" id="q6b">b. Counter Strike: Source<br>
+                <input type="radio" name="q6" value="c" id="q6c">c. Cascading Style Sheet<br><!-- correct_answer -->
+                <input type="radio" name="q6" value="d" id="q6d">Computer Style Sheet
+                <hr>
+
+                <!-- QUESTION 7 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> What is the code name for the mobile operating system Android 7.0?</h3>
+                <input type="radio" name="q7" value="a" id="q7a">a. Nougat<br><!-- correct_answer -->
+                <input type="radio" name="q7" value="b" id="q7b">b. Ice Cream Sandwich<br>
+                <input type="radio" name="q7" value="c" id="q7c">c. Jelly Bean<br>
+                <input type="radio" name="q7" value="d" id="q7d">d. Marshmallow
+                <hr>
+
+                <!-- QUESTION 8 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> On Twitter, what is the character limit for a Tweet?", "correct_answer
+                </h3>
+                <input type="radio" name="q8" value="a" id="q8a">a. 120<br>
+                <input type="radio" name="q8" value="b" id="q8b">b. 160<br>
+                <input type="radio" name="q8" value="c" id="q8c">c. 140<br><!-- correct_answer -->
+                <input type="radio" name="q8" value="d" id="q8d">d. 100
+                <hr>
+
+                <!-- QUESTION 9 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>True or False</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+
+                <h3><strong>Question :</strong> Linux was first created as an alternative to Windows XP.</h3>
+                <input type="radio" name="q9" value="a" id="q9a">b. True<br>
+                <input type="radio" name="q9" value="b" id="q9b">c. False
+                <!-- correct_answer -->
+                <hr>
+
+                <!-- QUESTION 10 -->
+                <p class="category">Science: Computers</p>
+                <p>Question Type: <strong>Multiple choice</strong></p>
+                <p>difficulty: <strong>Easy</strong></p>
+                <h3><strong>Question :</strong> Which programming language shares its name with an island in Indonesia?
+                </h3>
+                <input type="radio" name="q10" value="a" id="q10a">a. Java<br><!-- correct_answer -->
+                <input type="radio" name="q10" value="b" id="q10b">b. C<br>
+                <input type="radio" name="q10" value="c" id="q10c">c. Python<br>
+                <input type="radio" name="q10" value="d" id="q10d">d. Jakarta
+                <hr>
+
+                <input type="submit" value="Submit answer">
+            </form>
+        </section>
+
+        <div id="results"></div>
+
+        <footer>
+            <p>Copyright &copy; 2014, All Rights reserved. Created By Yari Herrera</p>
+        </footer>
+    </div>
+
+    <script>
+
+
+        function submitAnswers() {
+            var total = 10;
+            var score = 0;
+
+            // get user input
+            var q1 = document.forms["quizForm"]["q1"].value;
+            var q2 = document.forms["quizForm"]["q2"].value;
+            var q3 = document.forms["quizForm"]["q3"].value;
+            var q4 = document.forms["quizForm"]["q4"].value;
+            var q5 = document.forms["quizForm"]["q5"].value;
+            var q6 = document.forms["quizForm"]["q6"].value;
+            var q7 = document.forms["quizForm"]["q7"].value;
+            var q8 = document.forms["quizForm"]["q8"].value;
+            var q9 = document.forms["quizForm"]["q9"].value;
+            var q10 = document.forms["quizForm"]["q10"].value;
+
+            // Simple validation
+            for (i = 1; i <= total; i++) {
+                if (eval('q' + i) == null || eval('q' + i) == '') {
+                    alert("You missed question " + i);
+                    return false;
+                }
+            }
+
+            // Set the correct answers
+            var answers = ["a", "d", "a", "b", "b", "c", "a", "c", "c", "a"];
+
+            // Check the answers
+            for (i = 1; i <= total; i++) {
+                if (eval('q' + i) == answers[i - 1]) {
+                    score++;
+                }
+            }
+
+            // Display the results
+            var results = document.getElementById('results');
+            results.innerHTML = '<h3>You scored <span>' + score + '</span> out of <span>' + total + '</span></h3>';
+
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
