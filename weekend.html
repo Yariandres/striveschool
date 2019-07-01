@@ -1,0 +1,278 @@
+<!--
+    WEEKEND EXERCISES!
+
+    EX1.: Create a header for the page
+    EX2.: Create a subtitle for the page
+    EX3.: Create a table with 4 rows and 5 columns (ID, Name, Surname, Age, Email)
+    EX4.: Add a link to a Facebook profile for each of the IDs
+    EX5.: Add a text input "textChange" for plain text
+    EX6.: Add a button next to "textChange", when pressed the title and the H1 of the page must be changed with the content of "textChange"
+    EX7.: When the button is pressed, if "textChange" is empty, alert the user with a message
+    EX8.: Add a new section with title "Enrolled Students"
+    EX9.: Add an empty UL or DIV inside this new section
+    EX10.: Add an extra column to the Table named "actions"
+    EX11.: Add a button in each "action cell" with a "+" sign. When the button is pressed a new line must appear inside the "UL / DIV" in the enrolled section list
+    EX12.: Add button for each item of the list. When pressed, the student is removed from the list.
+    EX13.: Create a simple form with 5 fields: ID, Name, Surname, Age, Email
+    EX14.: Create a button "add students" which adds a new row to the table
+
+    EX15.: Add a "counter section" in which there is always the number of items in the List
+
+
+
+    EX16.: Add somewhere a button, on click, it changes the color of each item in the list in RED
+    EX17.: Add somewhere a button, on click, it counts the number of entry in the list and shows it in a newly created paragraph
+    EX18.: Add somewhere a button, on click, it swaps HEADER and Subtitle
+    EX19.: Add somewhere a button, on click, change the table background to a random color
+    EX20.: Add a "color picker" to the page, when the color changes, apply it to the header
+    EX21.: Add a dropdown (<select> tag), with your fav movies. When one is selected, change the heading of the page with the selected value
+-->
+
+<html>
+
+<style>
+    .field-wrapper {
+        margin: 10px 0;
+    }
+</style>
+
+<head>
+</head>
+
+<body>
+    <h1>This is a header</h1>
+    <h2>This is a subtitle</h2>
+
+    <div class="field-wrapper">
+        <input type="text" onfocus="this.value=''" id="changeName">
+        <button onclick="changeHeader()">Change Header and Page Title -></button>
+    </div>
+    <br>
+    <table>
+        <!-- table header  -->
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr class="user">
+            <td><a href="https://www.facebook.com">Facebook Profile</a></td>
+            <td>Yari</td>
+            <td>Andres</td>
+            <td>37</td>
+            <td>yari@example.com</td>
+            <td><button onclick="addAline()">+</button></td>
+        </tr>
+        <tr class="user">
+            <td><a href="https://www.facebook.com">Facebook Profile</a></td>
+            <td>Peter</td>
+            <td>Smith</td>
+            <td>55</td>
+            <td>peter@example.com</td>
+            <td><button onclick="addAline()">+</button></td>
+        </tr>
+        <tr class="user">
+            <td><a href="https://www.facebook.com">Facebook Profile</a></td>
+            <td>Mona</td>
+            <td>Small</td>
+            <td>26</td>
+            <td>mona@example.com</td>
+            <td><button onclick="addAline()">+</button></td>
+        </tr>
+        <tr class="user">
+            <td><a href="https://www.facebook.com">Facebook Profile</a></td>
+            <td>Luck</td>
+            <td>Jones</td>
+            <td>31</td>
+            <td>luck@example.com</td>
+            <td><button onclick="addAline()">+</button></td>
+        </tr>
+        <tr class="user">
+            <td><a href="https://www.facebook.com">Facebook Profile</a></td>
+            <td>May</td>
+            <td>smith</td>
+            <td>33</td>
+            <td>may@example.com</td>
+            <td><button onclick="addAline()">+</button></td>
+        </tr>
+    </table>
+
+
+    <form name="studentform" action="#" id="myForm" onsubmit="addStudent(); return false">
+        <h3><strong>Add :</strong> Student to the table</h3>
+        <input type="text" onfocus="this.value=''" name="id" value="Profile Link?" id="uid"><br>
+        <input type="text" onfocus="this.value=''" name="name" value="Name" id="uname"><br>
+        <input type="text" onfocus="this.value=''" name="Surname" value="Surname" id="usurname"><br>
+        <input type="text" onfocus="this.value=''" name="age" value="Age" id="uage"><br>
+        <input type="email" onfocus="this.value=''" name="email" value="example@example.com" id="uemail"><br>
+        <input type="submit" value="Submit Student">
+    </form>
+
+    <section>
+        <h2>Enrolled Students</h2>
+        <div id="counter"></div>
+
+        <ul id="list">
+
+        </ul>
+
+    </section>
+
+    <script>
+
+        function counter() {
+            var itemList = document.getElementsByTagName('li');
+            console.log(itemList);
+            var counterHolder = document.getElementById('counter');
+
+            for (var i = 0; i < itemList.length; i++) {
+                console.log(itemList[i]);
+            }
+
+            // counterHolder.innerText = itemList.length;
+
+        }
+
+        counter();
+
+        function addStudent() {
+            // get input value
+            var studentId = document.forms["studentform"]["uid"].value;
+            var studentName = document.forms["studentform"]["uname"].value;
+            var studentSurname = document.forms["studentform"]["usurname"].value;
+            var studentAge = document.forms["studentform"]["uage"].value;
+            var studentEmail = document.forms["studentform"]["uemail"].value;
+
+            // create an element <td>
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+            var td3 = document.createElement('td');
+            var td4 = document.createElement('td');
+            var td5 = document.createElement('td');
+            var td6 = document.createElement('td');
+
+            // create an element <a>
+            var a = document.createElement('a');
+            var button = document.createElement('button');
+
+            // set href attribute to <a>
+            a.setAttribute("href", studentId);
+            button.setAttribute("onclick", "addAline();");
+
+
+            // create a text node for the link
+            var linkText = document.createTextNode('Facebook Profile')
+            var nameText = document.createTextNode(studentName);
+            var surnameText = document.createTextNode(studentSurname);
+            var ageText = document.createTextNode(studentAge);
+            var emailText = document.createTextNode(studentEmail);
+            var buttonText = document.createTextNode('+');
+
+            // append text to <a>
+            a.appendChild(linkText);
+            // append child to the <tr>
+            td1.appendChild(a);
+            td2.appendChild(nameText);
+            td3.appendChild(surnameText);
+            td4.appendChild(ageText);
+            td5.appendChild(emailText);
+            button.appendChild(buttonText);
+            td6.appendChild(button);
+
+            console.log(td6);
+
+            // create a <tr> element
+            var tr = document.createElement('tr');
+            // set href attribute to <tr>
+            tr.setAttribute("class", "user");
+
+            // append child <td> to <tr>
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+            tr.appendChild(td6);
+
+            // get the parent element
+            var table = document.querySelector('tbody');
+
+            // append child to the table
+            table.appendChild(tr);
+        }
+
+        // write a function to change the h1
+        function changeHeader() {
+            // get the input value 
+            var element = document.querySelector('#changeName').value;
+
+            // create an if to check if the input is empty
+            if (element <= 0) {
+                // msg the user instructions
+                alert('Field can not be empty');
+
+                // stop the function
+                return false;
+
+            } else {
+                // get the h1
+                var h1 = document.getElementsByTagName('h1')[0];
+                h1.innerText = element;
+
+                // change the title
+                document.title = element;
+            }
+        }
+
+        // add a line function
+        function addAline() {
+            // get the <ul> with ID list
+            var list = document.querySelector('#list');
+
+            // create an <li>
+            var newLine = document.createElement('li');
+
+            // create text for the <li>
+            var dynamicText = document.createTextNode('Some dynamic text will go here');
+
+            // create a button
+            var button = document.createElement('button');
+
+            // set the button attribute 
+            button.setAttribute("onclick", "removerElement()")
+
+            // /text for the button
+            var btnText = document.createTextNode('Delete User');
+
+            // append the button text
+            button.appendChild(btnText);
+
+            // append text to the <li>
+            newLine.appendChild(dynamicText);
+
+            // add te new <li> to the <ul>
+            list.appendChild(newLine);
+
+            // add the button to the every new <li>
+            newLine.appendChild(button);
+
+        }
+
+        // create a remore element function
+        function removerElement() {
+            // get the <tr> with the user deatails
+            var userList = document.querySelectorAll('.user');
+
+            // remove the user
+            userList[0].remove();
+        }
+
+
+    </script>
+
+</body>
+
+</html>
