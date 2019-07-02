@@ -35,7 +35,7 @@
     }
 
     body {
-        background: rgb(8, 2, 26);
+        background: rgb(2, 1, 20);
     }
 
     ul,
@@ -52,8 +52,8 @@
 
     .ul-album1 {
         position: absolute;
-        left: 0;
-        top: -10%;
+        left: 5%;
+        top: 10%;
         background: rgba(66, 17, 17, 0.479);
         border-radius: 4px;
         /* font-size: 1em; */
@@ -63,7 +63,7 @@
         position: absolute;
         left: -20%;
         top: 20%;
-        background: rgba(66, 17, 17, 0.479);
+        background: rgba(20, 17, 66, 0.479);
         border-radius: 4px;
         /* font-size: 1em; */
         color: black;
@@ -83,14 +83,30 @@
         filter: alpha(opacity=50);
     }
 
+    img:hover {
+        padding: 16% 0 0 0;
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+    }
+
+    .albums-1 {
+        padding: 90px;
+        background: #17009723;
+
+    }
+
     .albums-2 {
-        margin: 100px 0;
+        padding: 90px;
         background: #484e00;
 
     }
 
     .album-image {
         max-width: 50px;
+    }
+
+    .small {
+        width: 450px;
     }
 
     /* EXERCISE 1
@@ -121,16 +137,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Eminem <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#eminen">Eminem <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dr Dre</a>
+                        <a class="nav-link" href="#dre">Dr Dre</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Some Other</a>
-                    </li>
-                </ul>
 
+                </ul>
             </div>
         </nav>
     </header>
@@ -138,8 +151,8 @@
         <a class="h1 font-weight-lighter" href="#"></a>
     </nav> -->
     <!-- albun 1 -->
-    <div class="container-fluid">
-        <div class="albums">
+    <div class="container">
+        <div class="albums-1" id="eminen">
             <div class="row">
 
                 <div class="col align-self-center">
@@ -157,33 +170,34 @@
 
                 </div>
 
-                <div class="col align-self-end">
+                <div class="col align-self-center">
                     <p class="lead text-light">Albums</p>
                     <div class="row">
 
-                        <div class="col">
+                        <div class="col-sm-8">
                             <img class="album-image rounded mx-auto d-block"
                                 src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.amiright.com%2Fphotoshops%2Fimages%2Falbum_1132767249_thumb.jpg&f=1"
                                 alt="">
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit.</small>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-8">
                             <img class="album-image rounded mx-auto d-block"
                                 src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette4.wikia.nocookie.net%2Flyricwiki%2Fimages%2F5%2F58%2FEminem_-_Eminem_Is_Back.jpg%2Frevision%2Flatest%2Fscale-to-width-down%2F180%3Fcb%3D20100803171433&f=1"
                                 alt="">
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-8">
                             <img class="album-image rounded mx-auto d-block"
                                 src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
                                 alt="">
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-8">
                             <img class="album-image rounded mx-auto d-block"
                                 src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
                                 alt="">
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+                            <smal class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
                         </div>
                     </div>
 
@@ -195,59 +209,62 @@
 
 
     <!-- album 2 -->
-    <div class="albums-2">
+    <div class="container">
+        <div class="albums-2" id="dre">
+            <div class="row">
+                <div class="col align-items-start">
+                    <p class="lead text-light">Albums</p>
+                    <div class="row">
+                        <div class="col-sm-col-sm-8">
+                            <img class="album-image rounded mx-auto d-block"
+                                src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.amiright.com%2Fphotoshops%2Fimages%2Falbum_1132767249_thumb.jpg&f=1"
+                                alt="">
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+                                ipsum dolor sit amet consectetur adipisicing elit.</small>
+                        </div>
+                        <div class="col-sm-col-sm-8">
+                            <img class="album-image rounded mx-auto d-block"
+                                src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette4.wikia.nocookie.net%2Flyricwiki%2Fimages%2F5%2F58%2FEminem_-_Eminem_Is_Back.jpg%2Frevision%2Flatest%2Fscale-to-width-down%2F180%3Fcb%3D20100803171433&f=1"
+                                alt="">
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+                                ipsum dolor sit amet consectetur adipisicing elit.</small>
+                        </div>
+                        <div class="col-sm-col-sm-8">
+                            <img class="album-image rounded mx-auto d-block"
+                                src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
+                                alt="">
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+                                ipsum dolor sit amet consectetur adipisicing elit.</small>
+                        </div>
+                        <div class="col-sm-col-sm-8">
+                            <img class="album-image rounded mx-auto d-block"
+                                src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
+                                alt="">
+                            <small class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+                                ipsum dolor sit amet consectetur adipisicing elit.</small>
+                        </div>
+                    </div>
 
-        <div class="row">
-            <div class="col align-items-start">
-                <p class="lead text-light">Albums</p>
-                <div class="row">
-
-                    <div class="col">
-                        <img class="album-image rounded mx-auto d-block"
-                            src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.amiright.com%2Fphotoshops%2Fimages%2Falbum_1132767249_thumb.jpg&f=1"
-                            alt="">
-                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                    </div>
-                    <div class="col">
-                        <img class="album-image rounded mx-auto d-block"
-                            src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette4.wikia.nocookie.net%2Flyricwiki%2Fimages%2F5%2F58%2FEminem_-_Eminem_Is_Back.jpg%2Frevision%2Flatest%2Fscale-to-width-down%2F180%3Fcb%3D20100803171433&f=1"
-                            alt="">
-                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                    </div>
-                    <div class="col">
-                        <img class="album-image rounded mx-auto d-block"
-                            src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
-                            alt="">
-                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                    </div>
-                    <div class="col">
-                        <img class="album-image rounded mx-auto d-block"
-                            src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fnetstorage.metrolyrics.com%2Falbums%2F1241039961relapse.jpg&f=1"
-                            alt="">
-                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                    </div>
                 </div>
 
-            </div>
-
-            <div class="col ">
-                <div class="col align-self-center">
-                    <ul class="list-group ul-album2">
-                        <li class="font-weight-light">Chronic 2000</li>
-                        <li class="font-weight-light">Explicit Lyrics</li>
-                        <li class="font-weight-light">Dr. Dre</li>
-                        <li class=" font-weight-light">HIP HOP</li>
-                        <li class="font-weight-light">1 Hours 19 mins
-                        </li>
-                    </ul>
-                    <img class="img-fluid"
-                        src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F64%2Fe0%2Ff8%2F64e0f882955e5e9e547ccf38a52e2266--beats-by-dre-net-worth.jpg&f=1"
-                        alt="Dr. Dre">
+                <div class="col">
+                    <div class="col align-self-center">
+                        <ul class="list-group ul-album2">
+                            <li class="font-weight-light">Chronic 2000</li>
+                            <li class="font-weight-light">Explicit Lyrics</li>
+                            <li class="font-weight-light">Dr. Dre</li>
+                            <li class=" font-weight-light">HIP HOP</li>
+                            <li class="font-weight-light">1 Hours 19 mins
+                            </li>
+                        </ul>
+                        <img class="img-fluid"
+                            src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F64%2Fe0%2Ff8%2F64e0f882955e5e9e547ccf38a52e2266--beats-by-dre-net-worth.jpg&f=1"
+                            alt="Dr. Dre">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- EXERCISE 3 
         Implement a navigation bar using the bootstrap component
