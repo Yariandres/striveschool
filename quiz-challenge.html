@@ -108,8 +108,8 @@
                     "type": "multiple",
                     "difficulty": "easy",
                     "question": "What is the most preferred image format used for logos in the Wikimedia database?",
-                    "correct_answer":
-                        ".svg", "incorrect_answers": [".png", ".jpeg", ".gif"]
+                    "correct_answer": ".svg",
+                    "incorrect_answers": [".png", ".jpeg", ".gif"]
                 },
                 {
                     "category": "Science: Computers",
@@ -147,15 +147,26 @@
                     "difficulty": "easy",
                     "question": "Which programming language shares its name with an island in Indonesia?",
                     "correct_answer": "Java",
-                    "incorrect_answers": ["Python", "C", "Jakarta"]
+                    "incorrect_answers": ["Python",
+                        "C",
+                        "Jakarta"]
                 }
             ];
 
 
         window.onload = function () {
 
+            // CREATE A HELPER FUNCTION TO SET ATTRIBUTES IN GLOBAL SCOPE
+            function setAttributes(el, attribute) {
+                for (var key in attribute) {
+                    el.setAttribute(key, attribute[key]);
+                }
+            }
+
             // get the form 
             var form = document.getElementById('quiz');
+
+
             // loop throu the the object
             for (var i = 0; i < questions.length; i++) {
 
@@ -168,7 +179,6 @@
 
                 // append the category text to the <p> tag
                 pTag.appendChild(categoryText);
-
 
                 // DISPALYING THE QUESTION
                 // creating a <h1> tag
@@ -188,15 +198,11 @@
 
                 // set the label text
                 labelText = document.createTextNode(questions[i].correct_answer);
+
+                // append child
                 correctAnswer.appendChild(labelText);
 
-                // CREATE A HELPER FUNCTION TO SET ATTRIBUTES TO THE RADIO TYPE INPUTs
-                function setAttributes(el, attribute) {
-                    for (var key in attribute) {
-                        el.setAttribute(key, attribute[key]);
-                    }
-                }
-
+                // set label attribute
                 setAttributes(correctAnswer, {
                     "for": "q1a"
                 });
@@ -216,20 +222,42 @@
                 form.appendChild(optionOne);
                 form.appendChild(correctAnswer);
 
-
-
-
             }
 
-            // console.log(questions[3].incorrect_answers)
+            for (var a = 0; a < questions.length; a++) {
 
-            var incorrectAnswers = questions.incorrect_answers;
-
-            for (var i = 0; i < incorrectAnswers.length; i++) {
-
+                // create inputs
                 var optionTwo = document.createElement('input');
-                console.log(optionTwo)
+                var optionThree = document.createElement('input');
+                var optionFour = document.createElement('input');
 
+                // create label
+                var incorrectOne = document.createElement('label');
+                var incorrectTwo = document.createElement('label');
+                var incorrectThree = document.createElement('label');
+
+                // set the label text
+                labelIncorrectAnswers = document.createTextNode(questions[a].incorrect_answers[0]);
+
+                // append label for the input
+                incorrect.appendChild(labelIncorrectAnswers);
+
+                // set attribute
+                setAttributes(incorrect, {
+                    "for": "q2a"
+                });
+
+                // set attribute for the input
+                setAttributes(optionTwo, {
+                    "type": "radio",
+                    "name": "q2",
+                    "value": "b",
+                    "id": "q2a"
+                });
+
+                // append to the form
+                form.appendChild(optionTwo);
+                form.appendChild(incorrect);
             }
 
         }
