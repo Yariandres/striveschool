@@ -179,11 +179,12 @@
 
                     <div class="row">
                         <div class="col-sm-6 col-md-4 col-lg-2 summer-badge">
-
-                            <img class="img-fluid" src="https://cdn.filestackcontent.com/k51P1acWS0CRcb1bne8m"
+                            <img class="img-fluid"
+                                src="https://media.istockphoto.com/photos/beach-accessories-on-table-on-beach-summer-holidays-picture-id674650538?k=6&m=674650538&s=612x612&w=0&h=bpkqaxzfmo7CKITU5P3rMlTsYHCOXzQaq9THXWfbMKE="
                                 alt=" Summer">
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-2">
+
+                        <div class="col-sm-6 col-md-4 col-lg-2 summer-badge">
                             <img class="img-fluid"
                                 src="https://media.istockphoto.com/photos/beach-accessories-on-table-on-beach-summer-holidays-picture-id674650538?k=6&m=674650538&s=612x612&w=0&h=bpkqaxzfmo7CKITU5P3rMlTsYHCOXzQaq9THXWfbMKE="
                                 alt=" Summer">
@@ -383,11 +384,6 @@
             </div>
         </div>
 
-
-
-
-
-
         <section class="section-contact my-5">
             <!-- Button trigger modal -->
 
@@ -474,22 +470,35 @@
 
     <script>
 
-        window.onload = function () {
 
-            // get the parebt div
-            var getDiv = document.querySelectorAll("div, summer-badge");
+        // get the parebt div
+        var getDiv = document.getElementsByClassName("summer-badge");
+
+        console.log(getDiv);
+
+
+        for (var i = 0; i < getDiv.length; i++) {
 
             // create the span
             var createSpan = document.createElement("span");
 
             // set the attribute
-            createSpan.setAttribute("class", "badge badge-primary");
+            createSpan.setAttribute("class", "badge badge-danger");
+
+            // create text node
+            var badgetText = document.createTextNode('Hot');
+
+            // create text node
+            createSpan.appendChild(badgetText);
 
             // append chhild
-            getDiv.appendChild(createSpan);
-
-            console.log(getDiv);
+            getDiv[i].appendChild(createSpan);
 
         }
+
+
+
+
+
     </script>
 </body>
