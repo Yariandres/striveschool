@@ -43,8 +43,8 @@
             Ex 11) Create a button next to each section to collapse and reopen the given section            
             Ex 13) Create a modal view with a message and a email field
             Ex 14) When the user clicks on "contact us" the modal is displayed
-
             Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers
+            
             Ex 16) Create a function to delete all "cards" from the page
 
             Ex 12) Create a method that counts the number of "travels" on the page"
@@ -73,6 +73,10 @@
             max-width: 300px;
             border-radius: 5%;
         }
+
+        .daydeal-img img {
+            width: 100%;
+        }
     </style>
 
 </head>
@@ -95,7 +99,10 @@
                             <a class="nav-link" href="#deals">Deals</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#WelSummer">Welcome Summer!</a>
+                            <a class="nav-link" href="#WelSummer">Welcome Summer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#destinations">Destinations</a>
                         </li>
                     </ul>
                 </div>
@@ -129,7 +136,7 @@
                     </h1>
 
                     <!-- grid -->
-                    <div class="row">
+                    <div class="row daydeal-img">
                         <div class="col-sm-6 col-md-4 col-lg-3">
                             <img class="img-fluid"
                                 src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ffortunedotcom.files.wordpress.com%2F2017%2F12%2Forlando-disney-world.jpg&f=1"
@@ -166,7 +173,7 @@
             </button>
         </p>
         <div class="collapse" id="collapseExampleTwo">
-            <div class="card card-body">
+            <div class="card-body">
                 <!-- Ex 5) Implement the "Welcome Summer" section.
                                  In this section you'll propose 6 destinations
                             In this section you should have:
@@ -267,39 +274,52 @@
             </button>
         </p>
         <div class="collapse" id="collapseExampleFour">
-            <div class="card card-body">
+            <div class="card-body">
                 <!-- <Ex 7) Make the "Deal of the day" section disappear when the user is mobile -->
                 <!-- Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards -->
-                <section class="my-5 ">
+                <section class="my-5" id="destinations">
                     <h2 class="my-5">Last Minute Destinations!</h2>
                     <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card cardDest" style="width: 18rem;">
                                 <img src="http://www.kinghenryviiischool.co.uk/wp-content/uploads/2018/07/Summer-pic-840x430.jpg"
                                     class="card-img-top" alt="Destination">
                                 <div class="card-body">
                                     <p class="card-text">Last minute destination holiday deal</p>
+                                    <button type="button" onclick="deleteCard(this);"
+                                        class="cardBtn btn btn-danger">Delete
+                                        Offer</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card cardDest" style="width: 18rem;">
                                 <img src="http://www.kinghenryviiischool.co.uk/wp-content/uploads/2018/07/Summer-pic-840x430.jpg"
                                     class="card-img-top" alt="Destination">
                                 <div class="card-body">
                                     <p class="card-text">Last minute destination holiday deal</p>
+                                    <button type="button" onclick="deleteCard(this);"
+                                        class="cardBtn btn btn-danger">Delete
+                                        Offer</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card cardDest" style="width: 18rem;">
                                 <img src="http://www.kinghenryviiischool.co.uk/wp-content/uploads/2018/07/Summer-pic-840x430.jpg"
                                     class="card-img-top" alt="Destination">
                                 <div class="card-body">
                                     <p class="card-text">Last minute destination holiday deal</p>
+                                    <button type="button" onclick="deleteCard(this);"
+                                        class="cardBtn btn btn-danger">Delete
+                                        Offer</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- delete btn -->
+                    <div class="text-center">
+
                     </div>
                 </section>
             </div>
@@ -312,7 +332,7 @@
             </button>
         </p>
         <div class="collapse" id="collapseExampleFive">
-            <div class="card card-body">
+            <div class="card-body">
                 <!-- <Ex 7) Make the "Deal of the day" section disappear when the user is mobile -->
                 <!-- Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards -->
                 <!-- Ex 10) Create a "Testimonial" section, in which the user can find several feedback from fake customers -->
@@ -441,7 +461,7 @@
                     Contact Us
                 </button>
 
-                <p>Built for <a href="#">Strive 2019</a> by <a href="https://twitter.com/mdo">@Rushita & Yari</a>.</p>
+                <p>Built for <a href="#">Strive 2019</a> by <a href="#">@Rushita & Yari</a>.</p>
                 <p>
                     <a href="#">Back to top</a>
                 </p>
@@ -450,10 +470,6 @@
             <!-- Copyright -->
 
         </footer>
-
-
-
-
 
     </div>
     <!-- container end -->
@@ -470,12 +486,9 @@
 
     <script>
 
-
+        // CREATE BADGES
         // get the parebt div
         var getDiv = document.getElementsByClassName("summer-badge");
-
-        console.log(getDiv);
-
 
         for (var i = 0; i < getDiv.length; i++) {
 
@@ -486,19 +499,23 @@
             createSpan.setAttribute("class", "badge badge-danger");
 
             // create text node
-            var badgetText = document.createTextNode('Hot');
+            var badgetText = document.createTextNode('Hot deal!');
 
             // create text node
             createSpan.appendChild(badgetText);
 
             // append chhild
             getDiv[i].appendChild(createSpan);
-
         }
 
 
 
+        // DELETE CARD FUNCTION
+        function deleteCard(event) {
+            // selecting the parent node
+            event.parentNode.parentNode.parentNode.removeChild(event.parentNode.parentNode);
 
+        }
 
     </script>
 </body>
