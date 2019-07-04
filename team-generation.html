@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team Generation</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<!--
+    WELCOME TO THE STRIVE TEAM GENERATOR!
+
+    The app is pretty straight forward:
+    - The user can add a list of names
+    - The user can set the number of teams
+
+    - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list
+
+    - Each team should be inside a "column"
+    - [EXTRA] Create a button to remove an user from a team, putting him back in the main list
+    - [EXTRA] Create a button to reset the state of the app
+-->
+
+<style>
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Team Generation</h1>
+
+        <!-- main table end -->
+        <section class="maintable">
+            <h2>Player's Table (Usual suspects)</h2>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td class="usual-players">Diego</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td class="usual-players">Ivaldo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td class="usual-players">Kryz</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td class="usual-players">Luca</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td class="usual-players">Michele</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td class="usual-players">Nagi</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td class="usual-players">Rob</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td class="usual-players">Rushita</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td class="usual-players">Sobia</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td class="usual-players">Stefano</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td class="usual-players">Tobia</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td class="usual-players">Noah</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td class="usual-players">Yari</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <!-- add player button -->
+            <button type="button" 
+                    class="btn btn-success" 
+                    data-toggle="modal" 
+                    data-target="#exampleModal"
+                    data-whatever="@mdo">Add a player
+            </button>
+
+        </section>
+        <!-- main table end -->
+        <hr>
+        <!-- team table -->
+        <section class="teams-table">
+
+            <!-- create a grid -->
+            <div class="row">
+                <!-- col 1  -->
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Choose...</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option class="teams" value="2">Two</option>
+                            <option class="teams" value="3">Three</option>
+                            <option class="teams" value="3">Four</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- col 2 -->
+                <div class="col" align="center">
+                    <button type="button" class="btn btn-primary" onclick="generateTeams();">Generate</button>
+                </div>
+                <!-- col 3 -->
+                <div class="col">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-info">Assign</button>
+                    </div>
+
+                </div>
+            </div><!-- row end -->
+
+        </section>
+        <!-- team table end -->
+
+
+        <section class="team-tables">
+
+        </section>
+    </div><!-- container -->
+
+    <!-- modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Player Name</label>
+                            <input type="text" onfocus="this.value=''" class="form-control newPlayer" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addPlayer();" data-dismiss="modal">Save Player</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- WELCOME TO THE STRIVE TEAM GENERATOR!
+        
+        The app is pretty straight forward:
+        - The user can add a list of names
+
+        - The user can set the number of teams
+        
+        
+
+
+        - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list 
+        - Each team should be inside a "column"
+        - [EXTRA] Create a button to remove an user from a team, putting him back in the main list
+        - [EXTRA] Create a button to reset the state of the app -->
+
+
+    <script>
+
+        // CREATE A HELPER FUNCTION TO SET ATTRIBUTES
+        function setAttributes(el, attribute) {
+                for (var key in attribute) {
+                    el.setAttribute(key, attribute[key]);
+                }
+            }
+
+
+        function addPlayer() {
+            // get the input value for new palyer
+            var addNew = document.querySelector('.newPlayer').value;
+            var getTbody = document.querySelector('tbody');
+            var getTh = document.querySelectorAll('th');
+
+            // set i out side to beaccesible
+            var i;
+            // create a loop to set counter column
+            for (i = 0; i < getTh.length; i++) {
+                
+            }
+
+            // create a text <tr> and <th> element
+            var tr = document.createElement('tr');
+            var th = document.createElement('th');
+            var td = document.createElement('td');
+
+            // create text nodes
+            var thText = document.createTextNode(i);            
+            var tdText = document.createTextNode(addNew);
+
+            // append child
+            th.appendChild(thText);
+            td.appendChild(tdText);
+            tr.appendChild(th);
+            tr.appendChild(td);
+            getTbody.appendChild(tr);
+            
+
+            // set atributes
+            setAttributes(th, {
+                "scope": "row"
+            });
+        }
+
+        function generateTeams() {
+            
+            // get the <option> tag
+            var option = document.querySelectorAll('option');  
+            
+            var thNum = "#"
+            var thName = "Name"
+           
+            if (option[0].value <= 2) {
+                // create two tables
+                var createTable = document.querySelector('.team-tables');
+                
+                createTable.innerHTML = `
+                <div class="row" id="table1">
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>                    
+                </div>
+                `
+            }
+        }
+
+        function assignPlayer() {
+
+            var getTbodyAssign = document.querySelectorAll(".usual-players");
+
+           
+            for (var a = 0; a < getTbodyAssign.length; a++) {
+                console.log(getTbodyAssign[a]);
+            }
+        }
+        let r = Math.random().toString(36).substring(7);
+            console.log("random", r);
+
+        assignPlayer()
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- // option.selectedIndex -->
