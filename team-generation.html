@@ -51,73 +51,23 @@
                         <th scope="col">Name</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td class="usual-players">Diego</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td class="usual-players">Ivaldo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td class="usual-players">Kryz</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td class="usual-players">Luca</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td class="usual-players">Michele</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td class="usual-players">Nagi</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td class="usual-players">Rob</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td class="usual-players">Rushita</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td class="usual-players">Sobia</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td class="usual-players">Stefano</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">11</th>
-                        <td class="usual-players">Tobia</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">12</th>
-                        <td class="usual-players">Noah</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">13</th>
-                        <td class="usual-players">Yari</td>
-                    </tr>
+                <tbody class="main-table">
+                    <!-- code will be inserted here -->
                 </tbody>
-
             </table>
 
+            <button type="button" class="btn btn-warning" data-toggle="modal" onclick="createTable();">Load players
+            </button>
+
             <!-- add player button -->
-            <button type="button" 
-                    class="btn btn-success" 
-                    data-toggle="modal" 
-                    data-target="#exampleModal"
-                    data-whatever="@mdo">Add a player
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@mdo">Add a player
             </button>
 
         </section>
         <!-- main table end -->
+
+
         <hr>
         <!-- team table -->
         <section class="teams-table">
@@ -166,7 +116,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -175,19 +125,21 @@
                     <form>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Player Name</label>
-                            <input type="text" onfocus="this.value=''" class="form-control newPlayer" id="recipient-name">
+                            <input type="text" onfocus="this.value=''" class="form-control newPlayer"
+                                id="recipient-name">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addPlayer();" data-dismiss="modal">Save Player</button>
+                    <button type="button" class="btn btn-primary" onclick="addPlayer();" data-dismiss="modal">Save
+                        Player</button>
                 </div>
             </div>
         </div>
     </div>
 
-    
+
 
 
     <!-- Optional JavaScript -->
@@ -220,102 +172,164 @@
 
     <script>
 
+        var players = [
+            "Diego",
+            "Ivaldo",
+            "Ivaldo",
+            "Luca",
+            "Michele",
+            "Nagi",
+            "Rob",
+            "Rushita",
+            "Sobia",
+            "Stefano",
+            "Tobia",
+            "Noah",
+            "Yari",
+            "John"
+        ];
+
         // CREATE A HELPER FUNCTION TO SET ATTRIBUTES
         function setAttributes(el, attribute) {
-                for (var key in attribute) {
-                    el.setAttribute(key, attribute[key]);
-                }
+            for (var key in attribute) {
+                el.setAttribute(key, attribute[key]);
             }
+        }
+
+
+        // get the table
+        var getMainTbody = document.querySelector('.main-table');
+
+        function createTable() {
+
+            // loop throu players array
+            for (var i = 0; i < players.length; i++) {
+
+                // create a text <tr> and <th> element
+                var tr = document.createElement('tr');
+                var th = document.createElement('th');
+                var td = document.createElement('td');
+
+                // create text nodes
+                var thText = document.createTextNode(i + 1);
+                var tdText = document.createTextNode(players[i]);
+
+                // append child
+                tr.appendChild(th);
+                th.appendChild(thText);
+                tr.appendChild(td);
+                td.appendChild(tdText);
+                getMainTbody.appendChild(tr);
+
+                // set atributes
+                setAttributes(th, {
+                    "scope": "row"
+                });
+            }
+        }
+        // getMainTbody.innerHTML = `
+        //         <tr>
+        //             <th scope="row">1</th>
+        //             <td class="usual-players">${players}</td>
+        //         </tr>
+        //     `;
+
+        // set i 
 
 
         function addPlayer() {
             // get the input value for new palyer
             var addNew = document.querySelector('.newPlayer').value;
-            var getTbody = document.querySelector('tbody');
-            var getTh = document.querySelectorAll('th');
 
-            // set i out side to beaccesible
-            var i;
+            var currentTablePlayers = document.querySelectorAll('td');
+
+            var a;
             // create a loop to set counter column
-            for (i = 0; i < getTh.length; i++) {
-                
+            for (a = 0; a <= currentTablePlayers.length; a++) {
+                console.log(currentTablePlayers[a]);
             }
 
             // create a text <tr> and <th> element
-            var tr = document.createElement('tr');
-            var th = document.createElement('th');
-            var td = document.createElement('td');
+            var tr2 = document.createElement('tr');
+            var th2 = document.createElement('th');
+            var td2 = document.createElement('td');
 
             // create text nodes
-            var thText = document.createTextNode(i);            
-            var tdText = document.createTextNode(addNew);
+            var thText2 = document.createTextNode(a);
+            var tdText2 = document.createTextNode(addNew);
+
 
             // append child
-            th.appendChild(thText);
-            td.appendChild(tdText);
-            tr.appendChild(th);
-            tr.appendChild(td);
-            getTbody.appendChild(tr);
-            
+            tr2.appendChild(th2);
+            th2.appendChild(thText2);
+            tr2.appendChild(td2);
+            td2.appendChild(tdText2);
+            getMainTbody.appendChild(tr2);
 
             // set atributes
-            setAttributes(th, {
+            setAttributes(th2, {
                 "scope": "row"
             });
+
+            // set atributes
+            setAttributes(td2, {
+                "class": "usual-players"
+            });
+
         }
 
-        function generateTeams() {
-            
-            // get the <option> tag
-            var option = document.querySelectorAll('option');  
-            
-            var thNum = "#"
-            var thName = "Name"
-           
-            if (option[0].value <= 2) {
-                // create two tables
-                var createTable = document.querySelector('.team-tables');
-                
-                createTable.innerHTML = `
-                <div class="row" id="table1">
-                    <div class="col-md-6">
-                        <table class="table table-bordered table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">${ thNum }</th>
-                                    <th scope="col">${ thName }</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="col-md-6">
-                        <table class="table table-bordered table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">${ thNum }</th>
-                                    <th scope="col">${ thName }</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>                    
-                </div>
-                `
-            }
-        }
+        // function generateTeams() {
 
-        function assignPlayer() {
+        //     // get the <option> tag
+        //     var option = document.querySelectorAll('option');
 
-            var getTbodyAssign = document.querySelectorAll(".usual-players");
+        //     var thNum = "#"
+        //     var thName = "Name"
 
-           
-            for (var a = 0; a < getTbodyAssign.length; a++) {
-                console.log(getTbodyAssign[a]);
-            }
-        }
-        let r = Math.random().toString(36).substring(7);
-            console.log("random", r);
+        //     if (option[0].value <= 2) {
+        //         // create two tables
+        //         var createTable = document.querySelector('.team-tables');
 
-        assignPlayer()
+        //         createTable.innerHTML = `
+        //         <div class="row" id="table1">
+        //             <div class="col-md-6">
+        //                 <table class="table table-bordered table-hover">
+        //                     <thead class="thead-light">
+        //                         <tr>
+        //                             <th scope="col">${ thNum}</th>
+        //                             <th scope="col">${ thName}</th>
+        //                         </tr>
+        //                     </thead>
+        //                 </table>
+        //             </div>
+        //             <div class="col-md-6">
+        //                 <table class="table table-bordered table-hover">
+        //                     <thead class="thead-light">
+        //                         <tr>
+        //                             <th scope="col">${ thNum}</th>
+        //                             <th scope="col">${ thName}</th>
+        //                         </tr>
+        //                     </thead>
+        //                 </table>
+        //             </div>                    
+        //         </div>
+        //         `
+        //     }
+        // }
+
+        // function assignPlayer() {
+
+        //     var getTbodyAssign = document.querySelectorAll(".usual-players");
+
+
+        //     for (var a = 0; a < getTbodyAssign.length; a++) {
+        //         console.log(getTbodyAssign[a]);
+        //     }
+        // }
+        // let r = Math.random().toString(36).substring(7);
+        // console.log("random", r);
+
+        // assignPlayer()
 
     </script>
 
