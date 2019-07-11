@@ -83,7 +83,7 @@
                         <select class="custom-select" id="inputGroupSelect01">
                             <option class="teams" value="2">Two</option>
                             <option class="teams" value="3">Three</option>
-                            <option class="teams" value="3">Four</option>
+                            <option class="teams" value="4">Four</option>
                         </select>
                     </div>
                 </div>
@@ -158,11 +158,7 @@
         
         The app is pretty straight forward:
         - The user can add a list of names
-
         - The user can set the number of teams
-        
-        
-
 
         - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list 
         - Each team should be inside a "column"
@@ -196,7 +192,6 @@
             }
         }
 
-
         // get the table
         var getMainTbody = document.querySelector('.main-table');
 
@@ -227,20 +222,11 @@
                 });
             }
         }
-        // getMainTbody.innerHTML = `
-        //         <tr>
-        //             <th scope="row">1</th>
-        //             <td class="usual-players">${players}</td>
-        //         </tr>
-        //     `;
-
-        // set i 
-
-
+        
         function addPlayer() {
             // get the input value for new palyer
             var addNew = document.querySelector('.newPlayer').value;
-
+            
             var currentTablePlayers = document.querySelectorAll('td');
 
             var a;
@@ -278,44 +264,133 @@
 
         }
 
-        // function generateTeams() {
+        function generateTeams() {
 
-        //     // get the <option> tag
-        //     var option = document.querySelectorAll('option');
+            var thNum = "#"
+            var thName = "Name"
 
-        //     var thNum = "#"
-        //     var thName = "Name"
 
-        //     if (option[0].value <= 2) {
-        //         // create two tables
-        //         var createTable = document.querySelector('.team-tables');
+            // get the <option> tag
+            var option = document.getElementById('inputGroupSelect01');
+            var optionValue = option.options[option.selectedIndex].value;
 
-        //         createTable.innerHTML = `
-        //         <div class="row" id="table1">
-        //             <div class="col-md-6">
-        //                 <table class="table table-bordered table-hover">
-        //                     <thead class="thead-light">
-        //                         <tr>
-        //                             <th scope="col">${ thNum}</th>
-        //                             <th scope="col">${ thName}</th>
-        //                         </tr>
-        //                     </thead>
-        //                 </table>
-        //             </div>
-        //             <div class="col-md-6">
-        //                 <table class="table table-bordered table-hover">
-        //                     <thead class="thead-light">
-        //                         <tr>
-        //                             <th scope="col">${ thNum}</th>
-        //                             <th scope="col">${ thName}</th>
-        //                         </tr>
-        //                     </thead>
-        //                 </table>
-        //             </div>                    
-        //         </div>
-        //         `
-        //     }
-        // }
+            // for (var y = 0; y < optionValue.length; y++) {
+            //     console.log(optionValue[y]);
+            // }             
+
+            if (optionValue == 2) {                
+                // create two tables
+                var createTable = document.querySelector('.team-tables');
+                createTable.innerHTML = `
+                <div class="row" id="table1">
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>                    
+                </div>
+                `;
+            } else if (optionValue == 3) {
+                var createTable = document.querySelector('.team-tables');
+                createTable.innerHTML = `
+                <div class="row" id="table1">
+                    <div class="col-md-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum}</th>
+                                    <th scope="col">${ thName}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum}</th>
+                                    <th scope="col">${ thName}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>                 
+                </div>
+                `;
+            } else if (optionValue == 4) {
+                var createTable = document.querySelector('.team-tables');
+                createTable.innerHTML = `
+                <div class="row" id="table1">
+                    <div class="col-md-3">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum }</th>
+                                    <th scope="col">${ thName }</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-3">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum}</th>
+                                    <th scope="col">${ thName}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-3">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum}</th>
+                                    <th scope="col">${ thName}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-3">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">${ thNum}</th>
+                                    <th scope="col">${ thName}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>                
+                </div>
+                `;
+            } else {
+                return false;
+            }
+        }
 
         // function assignPlayer() {
 
