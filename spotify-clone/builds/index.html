@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Potify Clone</title>
+    <!-- custom css-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- side navigation -->
+    <!-- <div class="container-fluid">
+        <section id="side-navigation">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+                    <a class="col-sm-3 col-md-2" href="#" style="color: white">
+                        <img src="img/Spotify-white.png" alt="" class="img-fluid">
+                    </a>
+
+                    <div class="sidebar-sticky mt-4">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M448 463.746h-149.333v-149.333h-85.334v149.333h-149.333v-315.428l192-111.746 192 110.984v316.19z"
+                                            fill="currentColor"></path>
+                                    </svg>
+
+                                    <span class="pl-2 font-weight-bold text-light">Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
+                                            fill="currentColor" fill-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="pl-2 font-weight-bold ">Search</span>
+
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M291.301 81.778l166.349 373.587-19.301 8.635-166.349-373.587zM64 463.746v-384h21.334v384h-21.334zM192 463.746v-384h21.334v384h-21.334z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                    <span class="pl-2 font-weight-bold ">Your Library</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav flex-column mb-2 mt-5">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <svg viewBox="0 0 20 20" style="color: #fff;" width="24" height="24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title>Download icon</title>
+                                        <path
+                                            d="M12 11.657V6h-1v5.65L9.076 9.414l-.758.65 3.183 3.702 3.195-3.7-.758-.653L12 11.657zM11.5 2C7.358 2 4 5.358 4 9.5c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5C19 5.358 15.642 2 11.5 2zm0 14C7.916 16 5 13.084 5 9.5S7.916 3 11.5 3 18 5.916 18 9.5 15.084 16 11.5 16z"
+                                            fill="currentColor" fill-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="ml-2 font-weight-bold ">Install App</span>
+
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <figure class="avatar" title="Yari Andres" style="background-image: url(
+                                        https://media.licdn.com/dms/image/C4D03AQEuVeeLIIDKnA/profile-displayphoto-shrink_100_100/0?e=1568246400&v=beta&t=oog3tVNqoJco2u2RvouzrPVqao5DEy89iMqvr4oF1bo);
+                                        width: 25px; height: 25px; float: left; border-radius: 50%">
+                                    </figure>
+                                    <span class="pl-2 font-weight-bold "> Yari Andres</span>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- side navigation end -->
+    <!-- </section> -->
+    <!-- sidenavigation end -->
+
+
+    <div class="container-fluid" id="side-navigation">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <a class="col-sm-3 col-md-2" href="#" style="color: white">
+                    <img src="img/Spotify-white.png" alt="" class="img-fluid">
+                </a>
+                <div class="sidebar-sticky mt-4">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M448 463.746h-149.333v-149.333h-85.334v149.333h-149.333v-315.428l192-111.746 192 110.984v316.19z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <span class="pl-2 font-weight-bold text-light">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                                <span class="pl-2 font-weight-bold ">Search</span>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M291.301 81.778l166.349 373.587-19.301 8.635-166.349-373.587zM64 463.746v-384h21.334v384h-21.334zM192 463.746v-384h21.334v384h-21.334z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <span class="pl-2 font-weight-bold ">Your Library</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav flex-column mb-2 mt-5">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg viewBox="0 0 20 20" style="color: #fff;" width="24" height="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title>Download icon</title>
+                                    <path
+                                        d="M12 11.657V6h-1v5.65L9.076 9.414l-.758.65 3.183 3.702 3.195-3.7-.758-.653L12 11.657zM11.5 2C7.358 2 4 5.358 4 9.5c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5C19 5.358 15.642 2 11.5 2zm0 14C7.916 16 5 13.084 5 9.5S7.916 3 11.5 3 18 5.916 18 9.5 15.084 16 11.5 16z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                                <span class="ml-2 font-weight-bold ">Install App</span>
+
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <figure class="avatar" title="Yari Andres" style="background-image: url(
+                                            https://media.licdn.com/dms/image/C4D03AQEuVeeLIIDKnA/profile-displayphoto-shrink_100_100/0?e=1568246400&v=beta&t=oog3tVNqoJco2u2RvouzrPVqao5DEy89iMqvr4oF1bo);
+                                            width: 25px; height: 25px; float: left; border-radius: 50%">
+                                </figure>
+                                <span class="pl-2 font-weight-bold "> Yari Andres</span>
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="section-media">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 my-3 ">
+                    <div class="text-uppercase nav-main">
+
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">featured</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Lipodcastnk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">chart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">genre & moods</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">release</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">discover</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="media-pics">
+                    <h1 class="text-light mt-5">Made for Yari</h1>
+                    <ul>
+                        <li class="list-item">
+
+                            <figure class="figure">
+                                <img src="img/artworks/1f4fe0c4fa3a21e56c82b19b6865f262ad928249.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">Release Radar
+                                </figcaption>
+                            </figure>
+
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/67ff6716a77df310f9a7ae382e0ae50e0f5bf57e.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">A caption image.
+                                </figcaption>
+                            </figure>
+
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/8ffcdd34eca189c75affa2325ef19219c6374333.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">Your Summer Rewind
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/REGIONAL_GLOBAL_DEFAULT.jpg" class=" img-fluid rounded ml-2"
+                                    alt="...">
+                                <figcaption class="text-center text-ligth">Daily Mix
+                                </figcaption>
+                            </figure>
+
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/VIRAL_IT_DEFAULT.jpg" class="img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">Discover Weekly
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+
+                    <!-- dicover -->
+
+                    <h2 class="text-light mt-5">Recently Played</h2>
+                    <ul>
+                        <li class="list-item">
+
+                            <figure class="figure">
+                                <img src="img/artworks/b221f0f6742f3c20f36fa00a1f2161551ecae50f.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">Release Radar
+                                </figcaption>
+                            </figure>
+
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/e488f79f331bdd6388449565739ee9d194a99c8d.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">A caption image.
+                                </figcaption>
+                            </figure>
+
+                        </li>
+                        <li>
+                            <figure class="figure">
+                                <img src="img/artworks/f6fdf56dc0f8dac811f9a063837700ed2265061b.jpg"
+                                    class=" img-fluid rounded ml-2" alt="...">
+                                <figcaption class="text-center text-ligth">Your Summer Rewind
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div> <!-- row end -->
+
+    </div>
+</body>
+
+</html>

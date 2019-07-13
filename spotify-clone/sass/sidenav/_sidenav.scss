@@ -1,0 +1,36 @@
+#side-navigation {
+    nav {
+        padding-top: 24px;
+        height: 100vh;
+        background-image: linear-gradient(to right bottom,
+                rgb(18, 18, 18),
+                rgb(0, 0, 0)),
+            linear-gradient(transparent,
+                rgb(0, 0, 0) 70%);
+
+
+        a {
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: .015em;
+
+
+            img {
+                max-width: 135px;
+            }
+        }
+
+        .active {
+            border-left: 4px solid #1ed760;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid rgba(204, 204, 204, 0.5);
+            margin: 1em 0;
+            padding: 0;
+        }
+    }
+}
