@@ -22,7 +22,7 @@ Strive Tutor
 
 ---
 
-_What we are learning:_
+## What we are learning:
 
 - HTML, CSS and JavaScript are the building blocks of every internet page. With this skillset, you'll be able to develop every web interface!
 - Bootstrap4 is the most adopted framework to create web interfaces. It allows fast and easy creation of responsive web pages.
