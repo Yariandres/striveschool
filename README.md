@@ -1,9 +1,7 @@
 # STRIVE SCHOOL
 
 Strive is a selective, six-months long online course, for aspiring software developers.
-Our tutors will teach you to code and we'll help you land a great job as a Web Engineer.
-
-# 1 Day
+The tutors will teach students to code and help them land a great job as a Web Engineer.
 
 ## 12 Modules, 2 weeks each, for a total 24 weeks of hard, fun, energising work. In each module:
 
