@@ -7071,7 +7071,6 @@ h1 {
 
 #side-navigation nav {
   padding-top: 24px;
-  height: 100vh;
   background-image: linear-gradient(to right bottom, #121212, black), linear-gradient(transparent, black 70%); }
   #side-navigation nav a {
     font-size: 12px;

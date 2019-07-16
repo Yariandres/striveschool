@@ -1,13 +1,11 @@
 #side-navigation {
     nav {
         padding-top: 24px;
-        height: 100vh;
         background-image: linear-gradient(to right bottom,
                 rgb(18, 18, 18),
                 rgb(0, 0, 0)),
             linear-gradient(transparent,
                 rgb(0, 0, 0) 70%);
-
 
         a {
             font-size: 12px;
