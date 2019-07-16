@@ -38,109 +38,140 @@
         crossorigin="anonymous"></script>
 
     <script>
-        var baseURL = "https://jsonplaceholder.typicode.com/";
-        function loadDataES5() {
-            var request = new XMLHttpRequest(); //create request
-            request.open("GET", baseURL + "posts"); //specify HTTP method and URL
-            request.onreadystatechange = function () {
-                //specify what we are gonna do when we have some data back
-                //The request has some result for me
-                if (this.status == 200) {
-                    //check if the request was successful
-                    //do something
-                    //document.querySelector("#ajaxResponse").innerText = request.responseText;
-                    var posts = JSON.parse(request.responseText); //parsing response as json
-                    var div = document.querySelector("#ajaxResponse");
-                    for (var i = 0; i < posts.length; i++) {
-                        //foreach post, we create a new div with title and body
-                        var newPost = document.createElement("div");
-                        newPost.classList.add("col-md-3");
-                        var title = document.createElement("h4");
-                        title.innerText = posts[i].title;
-                        newPost.appendChild(title);
-                        var body = document.createElement("span");
-                        body.innerText = posts[i].body;
-                        newPost.appendChild(body);
-                        div.appendChild(newPost);
-                    }
-                } else {
-                    //if not...
-                    //show error or retry
-                }
-            };
-            request.send(); //start the request
-        }
-        function loadDataES6() {
-            fetch("https://jsonplaceholder.typicode.com/posts", {
-                method: "GET"
-            })
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                .then(function (posts) {
-                    var div = document.querySelector("#ajaxResponse");
-                    for (var i = 0; i < posts.length; i++) {
-                        //foreach post, we create a new div with title and body
-                        div.innerHTML += `<div class="col-md-3">
-                            <h4>${posts[i].title}</h4>
-                            <span>${posts[i].body}</span>
-                            </div>
-                        `;
-                    }
-                })
-                .catch(function (error) { });
-        }
-        function loadDataEmployees() {
-            var headers = new Headers({
-                "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-                "X-RapidAPI-Key": "575de39080mshf1f9cab8127c63fp1bcad8jsn113d9f3f814b"
-            });
-            fetch("http://dummy.restapiexample.com/api/v1/employees", {
-                method: "GET"
-            })
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                .then(function (posts) {
-                    var div = document.querySelector("#ajaxResponse");
-                    for (var i = 0; i < posts.length; i++) {
-                        //foreach post, we create a new div with title and body
-                        div.innerHTML += `<div class="col-md-3" id=${posts[i].id}>
-                            <h4>${posts[i].employee_name}</h4>
-                            <span>${posts[i].employee_salary}</span>
-                            <span>${posts[i].employee_age}</span>
-                            </div>
-                        `;
-                    }
-                })
-                .catch(function (error) { });
-        }
-        function addEmployee() {
-            var newEmployee = { //creating the object
-                name: document.querySelector("#name").value, //getting the value from the inputtext
-                age: document.querySelector("#age").value,
-                salary: document.querySelector("#salary").value
-            };
-            fetch("http://dummy.restapiexample.com/api/v1/create", {
-                method: "POST", //POST method
-                body: JSON.stringify(newEmployee) //passing the newEmployee object as JSON
-            }).then(function (resp) {
-                if (resp.ok) {
-                    return resp.json();
-                }
-            }).then(function (json) {
-                console.log(json);
-            })
-        }
+        // var baseURL = "https://jsonplaceholder.typicode.com/";
+        // function loadDataES5() {
+        //     var request = new XMLHttpRequest(); //create request
+        //     request.open("GET", baseURL + "posts"); //specify HTTP method and URL
+        //     request.onreadystatechange = function () {
+        //         //specify what we are gonna do when we have some data back
+        //         //The request has some result for me
+        //         if (this.status == 200) {
+        //             //check if the request was successful
+        //             //do something
+        //             //document.querySelector("#ajaxResponse").innerText = request.responseText;
+        //             var posts = JSON.parse(request.responseText); //parsing response as json
+        //             var div = document.querySelector("#ajaxResponse");
+        //             for (var i = 0; i < posts.length; i++) {
+        //                 //foreach post, we create a new div with title and body
+        //                 var newPost = document.createElement("div");
+        //                 newPost.classList.add("col-md-3");
+        //                 var title = document.createElement("h4");
+        //                 title.innerText = posts[i].title;
+        //                 newPost.appendChild(title);
+        //                 var body = document.createElement("span");
+        //                 body.innerText = posts[i].body;
+        //                 newPost.appendChild(body);
+        //                 div.appendChild(newPost);
+        //             }
+        //         } else {
+        //             //if not...
+        //             //show error or retry
+        //         }
+        //     };
+        //     request.send(); //start the request
+        // }
+        // function loadDataES6() {
+        //     fetch("https://jsonplaceholder.typicode.com/posts", {
+        //         method: "GET"
+        //     })
+        //         .then(function (response) {
+        //             if (response.ok) {
+        //                 return response.json();
+        //             }
+        //         })
+        //         .then(function (posts) {
+        //             var div = document.querySelector("#ajaxResponse");
+        //             for (var i = 0; i < posts.length; i++) {
+        //                 //foreach post, we create a new div with title and body
+        //                 div.innerHTML += `<div class="col-md-3">
+        //                     <h4>${posts[i].title}</h4>
+        //                     <span>${posts[i].body}</span>
+        //                     </div>
+        //                 `;
+        //             }
+        //         })
+        //         .catch(function (error) { });
+        // }
+        // function loadDataEmployees() {
+        //     var headers = new Headers({
+        //         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        //         "X-RapidAPI-Key": "575de39080mshf1f9cab8127c63fp1bcad8jsn113d9f3f814b"
+        //     });
+        //     fetch("http://dummy.restapiexample.com/api/v1/employees", {
+        //         method: "GET"
+        //     })
+        //         .then(function (response) {
+        //             if (response.ok) {
+        //                 return response.json();
+        //             }
+        //         })
+        //         .then(function (posts) {
+        //             var div = document.querySelector("#ajaxResponse");
+        //             for (var i = 0; i < posts.length; i++) {
+        //                 //foreach post, we create a new div with title and body
+        //                 div.innerHTML += `<div class="col-md-3" id=${posts[i].id}>
+        //                     <h4>${posts[i].employee_name}</h4>
+        //                     <span>${posts[i].employee_salary}</span>
+        //                     <span>${posts[i].employee_age}</span>
+        //                     </div>
+        //                 `;
+        //             }
+        //         })
+        //         .catch(function (error) { });
+        // }
+        // function addEmployee() {
+        //     var newEmployee = { //creating the object
+        //         name: document.querySelector("#name").value, //getting the value from the inputtext
+        //         age: document.querySelector("#age").value,
+        //         salary: document.querySelector("#salary").value
+        //     };
+        //     fetch("http://dummy.restapiexample.com/api/v1/create", {
+        //         method: "POST", //POST method
+        //         body: JSON.stringify(newEmployee) //passing the newEmployee object as JSON
+        //     }).then(function (resp) {
+        //         if (resp.ok) {
+        //             return resp.json();
+        //         }
+        //     }).then(function (json) {
+        //         console.log(json);
+        //     })
+        // }
+        // window.onload = function () {
+        //     //Get First albums
+        //     //Get second albums
+        //     //Get top 10 singles
+        // }
+
         window.onload = function () {
-            //Get First albums
-            //Get second albums
-            //Get top 10 singles
+
+            var headers = new Headers({
+
+                "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                "X-RapidAPI-Key": "d43847625amsh50c744e1bce38e3p1d6faajsnb5136262d092"
+            });
+
+
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+                method: "GET",
+                headers: headers
+            })
+                .then(function (respond) {
+
+                    if (respond.ok) {
+                        return respond.json();
+                    }
+                })
+                .then(function (album) {
+
+                    console.log(album)
+
+
+
+                })
+                .catch(function (error) { });
         }
+
+
     </script>
 </body>
 

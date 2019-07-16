@@ -16,7 +16,7 @@
         width: 180px;
         height: 50px;
         border-radius: 20px;
-        color: rgb(0, 0, 0);
+
         /* tranzitionstransitions applied to the vodeovideo element */
         -moz-transition: all 1s ease-in-out;
         -webkit-transition: all 1s ease-in-out;
@@ -33,10 +33,11 @@
     <div class="container-fluid" id="side-navigation">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <a class="col-sm-3 col-md-2" href="#" style="color: white">
-                    <img src="img/Spotify-white.png" alt="" class="img-fluid">
-                </a>
-                <div class="sidebar-sticky mt-4">
+
+                <div class="sidebar-sticky fixed-top mt-4">
+                    <a class="col-sm-3 col-md-2" href="#" style="color: white">
+                        <img src="img/Spotify-white.png" alt="" class="img-fluid mb-5">
+                    </a>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">
@@ -84,12 +85,12 @@
                                         d="M12 11.657V6h-1v5.65L9.076 9.414l-.758.65 3.183 3.702 3.195-3.7-.758-.653L12 11.657zM11.5 2C7.358 2 4 5.358 4 9.5c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5C19 5.358 15.642 2 11.5 2zm0 14C7.916 16 5 13.084 5 9.5S7.916 3 11.5 3 18 5.916 18 9.5 15.084 16 11.5 16z"
                                         fill="currentColor" fill-rule="evenodd"></path>
                                 </svg>
-                                <span class="ml-2 font-weight-bold ">Install App</span>
+                                <span class="ml-2 font-weight-bold">Install App</span>
 
                             </a>
                         </li>
                     </ul>
-                    <hr>
+
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -143,7 +144,7 @@
                     <!-- Metallica -->
 
                     <h2 class="text-light mt-5">List for Metallica</h2>
-                    <ul>
+                    <ul id="albumDetailsMetali">
                         <li class="list-item">
 
                         </li>
@@ -151,7 +152,7 @@
 
                     <!-- behemoth -->
                     <h2 class="text-light mt-5">List for behemoth</h2>
-                    <ul>
+                    <ul id="albumDetailsbehemoth">
                         <li class="list-item">
 
                         </li>
@@ -175,7 +176,6 @@
 
     <!-- custom scripts -->
     <script>
-
 
 
         window.onload = function () {
@@ -203,7 +203,7 @@
                     var firstUl = document.querySelector("#albumDetails");
 
                     for (i = 0; i < 3; i++) {
-                        console.log(album.data[i]);
+
 
                         // display the content of the album
                         firstUl.innerHTML +=
@@ -215,7 +215,7 @@
                                     <figcaption class="text-center text-ligth">${ album.data[i].title} <br>
                                     </figcaption>
                                    <video controls="" name="media">
-                                        <source src="${album.data[i].preview}" type="audio/mpeg">
+                                    <source src="${album.data[i].preview}" type="audio/mpeg">
                                         
                                     </video>
                                 </figure>
@@ -230,9 +230,108 @@
                 .catch(function (error) { });
 
 
+
+            // METALICA
+
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+                method: "GET",
+                headers: headers
+            })
+
+                .then(function (result) {
+
+                    if (result.ok) {
+                        return result.json();
+                    }
+                })
+                .then(function (album) {
+
+                    // get the parent element
+                    var secondtUl = document.querySelector("#albumDetailsMetali");
+                    console.log(secondtUl);
+                    for (m = 0; m < 6; m++) {
+
+
+                        // display the content of the album
+                        secondtUl.innerHTML +=
+                            `
+                            <li>
+                                <figure class="figure">
+                                    <img src="${ album.data[m].album.cover_big}"
+                                        class=" img-fluid rounded ml-2" alt="...">
+                                    <figcaption class="text-center text-ligth">${ album.data[m].title} <br>
+                                    </figcaption>
+                                   <video controls="" name="media">
+                                        <source src="${album.data[m].preview}" type="audio/mpeg">
+
+                                    </video>
+                                </figure>
+
+                            </li>                        
+                        `;
+
+                    }
+
+
+                })
+                .catch(function (error) { });
+
+
+            // behemoth
+
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
+                method: "GET",
+                headers: headers
+            })
+
+                .then(function (display) {
+
+                    if (display.ok) {
+                        return display.json();
+                    }
+                })
+                .then(function (album) {
+
+                    // get the parent element
+                    var thirdUl = document.querySelector("#albumDetailsbehemoth");
+                    console.log(thirdUl);
+                    for (y = 0; y < 4; y++) {
+
+
+                        // display the content of the album
+                        thirdUl.innerHTML +=
+                            `
+                            <li>
+                                <figure class="figure">
+                                    <img src="${ album.data[y].album.cover_big}"
+                                        class=" img-fluid rounded ml-2" alt="...">
+                                    <figcaption class="text-center text-ligth">${ album.data[y].title} <br>
+                                    </figcaption>
+                                   <video controls="controls" name="media" id="myvideo">
+                                        <source src="${album.data[y].preview}" type="audio/mpeg">
+
+                                    </video>
+                                </figure>
+
+                            </li>                        
+                        `;
+
+                    }
+
+
+                })
+                .catch(function (error) { });
+
+
             //Get second albums
             //Get top 10 singles
+
+
         }
+
+
+
+
 
     </script>
 
