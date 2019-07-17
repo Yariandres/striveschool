@@ -9,4 +9,4 @@ _Strive Instructor_
 - GIT STATUS
 - GIT BRANCH
 
-![Git image](images/gitimage.png)
+![Git image](images/gitimage.jpg)
