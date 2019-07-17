@@ -1,5 +1,5 @@
 #LIVE LESSON WITH INSTRUCTOR:
-**Riccardo Gulin**
+Riccardo Gulin
 _Strive Instructor_
 
 ## INTRODUCTION TO NEW COMMANDS
@@ -9,4 +9,4 @@ _Strive Instructor_
 - GIT STATUS
 - GIT BRANCH
 
-![Git image](/images/gitimage.png)
+![Git image](images/gitimage.png)
