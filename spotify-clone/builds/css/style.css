@@ -7035,7 +7035,6 @@ a.text-dark:hover, a.text-dark:focus {
 #section-media {
   padding: 0 32px;
   margin: 0 auto;
-  max-width: 1480px;
   background-image: linear-gradient(to right bottom, #121212, black), linear-gradient(transparent, black 70%);
   background-image: linear-gradient(to right bottom, #8e0b18, black), linear-gradient(transparent, black 70%); }
   #section-media .nav-main {
@@ -7062,6 +7061,16 @@ a.text-dark:hover, a.text-dark:focus {
     #section-media #media-pics ul li figure figcaption {
       margin-top: 10px;
       color: #fff; }
+  #section-media .playMe {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0 10px; }
+  #section-media .playMe:hover {
+    border-radius: 20px;
+    background: greenyellow;
+    color: #000; }
+  #section-media audio {
+    width: 210px; }
 
 body {
   font-family: Helvetica Neue, Helvetica, Arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic, sans-serif; }
@@ -7075,11 +7084,10 @@ h1 {
   #side-navigation nav a {
     font-size: 12px;
     line-height: 20px;
-    letter-spacing: .015em; }
+    letter-spacing: .015em;
+    display: inline; }
     #side-navigation nav a img {
       max-width: 135px; }
-  #side-navigation nav .active {
-    border-left: 4px solid #1ed760; }
   #side-navigation nav hr {
     display: block;
     height: 1px;
@@ -7087,3 +7095,13 @@ h1 {
     border-top: 1px solid rgba(204, 204, 204, 0.5);
     margin: 1em 0;
     padding: 0; }
+  #side-navigation nav .searchBtn {
+    margin-left: 16px; }
+  #side-navigation nav svg {
+    cursor: pointer !important; }
+  #side-navigation nav input {
+    width: 10%;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: 0;
+    padding-left: 10px; }

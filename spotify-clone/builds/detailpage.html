@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<style>
+    body {
+        background: #000;
+    }
+
+
+    img {
+        max-height: 450px;
+
+    }
+
+    span {
+        float: right;
+    }
+
+    p {
+        cursor: pointer;
+        font-size: 40px;
+
+        padding: 0 13px;
+
+    }
+
+    p:hover {
+        color: greenyellow;
+
+
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col" id="col-1">
+                <!-- image  -->
+            </div>
+            <div class="col" id="col-2">
+                <!-- playlist -->
+            </div>
+            <div class="col" id="col-3">
+                <!-- play btn -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        window.onload = () => {
+            var messageId = new URLSearchParams(document.location.search).get("id");
+
+            var headers = new Headers({
+
+                "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                "X-RapidAPI-Key": "5c7836e096msh890d36fc1471580p1e54e7jsne47005d9e9ce"
+            });
+
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + messageId, {
+                method: "GET",
+                headers: headers
+            })
+                .then(resp => resp.json())
+                .then(json => {
+                    // console.log(json.tracks.data)
+                    var colOne = document.querySelector("#col-1");
+                    colOne.innerHTML += `                        
+                                    <div class="col text-center">                                
+                                        <img src="${json.cover}" class="img-fluid" alt="album cover">
+                                        <h2 class="text-light">${json.title}</h2>
+                                    </div>              
+                            `;
+
+                    json.tracks.data.forEach(function (soundTrack) {
+                        console.log(soundTrack)
+                        var colTwo = document.querySelector("#col-2");
+
+                        colTwo.innerHTML += `
+                                    <div class="col">
+                                        <ul class="list-unstyled">
+                                            <li class="text-light">${soundTrack.title}<br>
+                                                <small>${soundTrack.artist.name}</small>                    
+                                                <span class="text-light text-right">length: ${soundTrack.duration}</span>
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>   
+                                `;
+
+                        var colThree = document.querySelector("#col-3");
+                        colThree.innerHTML += `
+                                    <div class="col">             
+                                        <p class="text-right">
+                                            <a onclick="this.firstChild.play()">                                               
+                                                <audio controls src="${soundTrack.preview}" type="audio/mpeg"></audio>
+                                            </a>
+                                        </p>
+                                    </div>   
+                                `;
+                    });
+                })
+        }
+
+    </script>
+</body>
+
+</html>

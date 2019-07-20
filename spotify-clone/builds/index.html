@@ -10,25 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<style>
-    video {
-        /* video border */
-        width: 180px;
-        height: 50px;
-        border-radius: 20px;
-
-        /* tranzitionstransitions applied to the vodeovideo element */
-        -moz-transition: all 1s ease-in-out;
-        -webkit-transition: all 1s ease-in-out;
-        -o-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-        transition: all 1s ease-in-out;
-
-    }
-
-    /* style for buttons */
-</style>
-
 <body>
     <div class="container-fluid" id="side-navigation">
         <div class="row">
@@ -40,7 +21,7 @@
                     </a>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active">
                                 <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -51,16 +32,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="searchBtn" onclick="getTerm()">
                                 <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
                                         fill="currentColor" fill-rule="evenodd"></path>
                                 </svg>
-                                <span class="pl-2 font-weight-bold ">Search</span>
-
                             </a>
+                            <input type="text" id="search">
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -136,10 +116,10 @@
                 <!-- main section nav end  -->
 
                 <div id="media-pics">
-                    <h1 class="text-light mt-5">List for Emimen</h1>
-                    <ul id="albumDetails">
-
-                    </ul>
+                    <h2 class="text-light mt-5" id="SearchResult"></h2>
+                    <div class="row" id="albumDetails">
+                        <!-- list of album continer -->
+                    </div>
 
                     <!-- Metallica -->
 
@@ -176,9 +156,10 @@
 
     <!-- custom scripts -->
     <script>
+        // create an empty albums array to hold the loaded data
+        var albums = [];
 
-
-        window.onload = function () {
+        getTerm = () => {
 
             var headers = new Headers({
 
@@ -186,148 +167,162 @@
                 "X-RapidAPI-Key": "5c7836e096msh890d36fc1471580p1e54e7jsne47005d9e9ce"
             });
 
+            // get the search term
+            var searTerm = document.querySelector("#search").value;
 
-            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+            // getting the h2
+            var h2 = document.querySelector("#SearchResult");
+
+            // writing inside the the h2
+            h2.innerHTML = `<span> Search result for: ${searTerm} <span>`;
+
+            // fetching the object from the API
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searTerm, {
                 method: "GET",
                 headers: headers
             })
-                .then(function (respond) {
+                .then((resp) => resp.json())
+                .then((json) => {
+                    // creating JSON asigning to albums to store it
+                    albums = json;
+                    // calls the  getAlbum function()
+                    getAlbum(albums);
+                });
+        };
 
-                    if (respond.ok) {
-                        return respond.json();
-                    }
-                })
-                .then(function (album) {
+        getAlbum = (list) => {
+            // get the parent element
+            var div = document.querySelector("#albumDetails");
 
-                    // get the parent element
-                    var firstUl = document.querySelector("#albumDetails");
+            //  clearing the div album image conatiner
+            div.innerHTML = "";
 
-                    for (i = 0; i < 3; i++) {
-
-
-                        // display the content of the album
-                        firstUl.innerHTML +=
-                            `
-                            <li>
-                                <figure class="figure">
-                                    <img src="${ album.data[i].album.cover_big}"
-                                        class=" img-fluid rounded ml-2" alt="...">
-                                    <figcaption class="text-center text-ligth">${ album.data[i].title} <br>
-                                    </figcaption>
-                                   <video controls="" name="media">
-                                    <source src="${album.data[i].preview}" type="audio/mpeg">
-                                        
-                                    </video>
-                                </figure>
-                                
-                            </li>                        
-                        `;
-
-                    }
+            // get list data
+            list.data.forEach((album) => {
+                console.log(album.title)
+                div.innerHTML += `
+                    <p>${album.title}</>
+                `;
+            });
+        };
 
 
-                })
-                .catch(function (error) { });
+
+
+        // for (i = 0; i < 3; i++) {
+
+        //     // display the content of the album
+        //     div.innerHTML +=
+        //         `
+        //                 <div class="col-md-3">
+        //                 <a href="detailpage.html?id=${album.data[i].album.id}">
+        //                     <img src="${ album.data[i].album.cover_big}" class="card-img-top" alt="album image">
+        //                 </a>
+        //                 <p class="text-light text-center my-4">${ album.data[i].title} 
+
+        //                     <audio controls src="${album.data[i].preview}" type="audio/mpeg"></audio>
+
+
+        //                 </p>
+
+        //             </div>                       
+        //         `;
+
+        // }
+
+
+
+
 
 
 
             // METALICA
 
-            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
-                method: "GET",
-                headers: headers
-            })
+            // fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+            //     method: "GET",
+            //     headers: headers
+            // })
 
-                .then(function (result) {
+            //     .then(function (result) {
 
-                    if (result.ok) {
-                        return result.json();
-                    }
-                })
-                .then(function (album) {
+            //         if (result.ok) {
+            //             return result.json();
+            //         }
+            //     })
+            //     .then(function (album) {
 
-                    // get the parent element
-                    var secondtUl = document.querySelector("#albumDetailsMetali");
-                    console.log(secondtUl);
-                    for (m = 0; m < 6; m++) {
+            //         // get the parent element
+            //         var secondtUl = document.querySelector("#albumDetailsMetali");
 
-
-                        // display the content of the album
-                        secondtUl.innerHTML +=
-                            `
-                            <li>
-                                <figure class="figure">
-                                    <img src="${ album.data[m].album.cover_big}"
-                                        class=" img-fluid rounded ml-2" alt="...">
-                                    <figcaption class="text-center text-ligth">${ album.data[m].title} <br>
-                                    </figcaption>
-                                   <video controls="" name="media">
-                                        <source src="${album.data[m].preview}" type="audio/mpeg">
-
-                                    </video>
-                                </figure>
-
-                            </li>                        
-                        `;
-
-                    }
+            //         for (m = 0; m < 6; m++) {
 
 
-                })
-                .catch(function (error) { });
+            //             // display the content of the album
+            //             secondtUl.innerHTML +=
+            //                 `
+            //                 <li>
+            //                     <figure class="figure">
+            //                         <img src="${ album.data[m].album.cover_big}"
+            //                             class=" img-fluid rounded ml-2" alt="...">
+            //                         <figcaption class="text-center text-ligth">${ album.data[m].title} <br>
+            //                         </figcaption>
+            //                         <audio controls src="${album.data[m].preview}" type="audio/mpeg"></audio>
+            //                     </figure>
+
+            //                 </li>                        
+            //             `;
+
+            //         }
 
 
-            // behemoth
-
-            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
-                method: "GET",
-                headers: headers
-            })
-
-                .then(function (display) {
-
-                    if (display.ok) {
-                        return display.json();
-                    }
-                })
-                .then(function (album) {
-
-                    // get the parent element
-                    var thirdUl = document.querySelector("#albumDetailsbehemoth");
-                    console.log(thirdUl);
-                    for (y = 0; y < 4; y++) {
+            //     })
+            //     .catch(function (error) { });
 
 
-                        // display the content of the album
-                        thirdUl.innerHTML +=
-                            `
-                            <li>
-                                <figure class="figure">
-                                    <img src="${ album.data[y].album.cover_big}"
-                                        class=" img-fluid rounded ml-2" alt="...">
-                                    <figcaption class="text-center text-ligth">${ album.data[y].title} <br>
-                                    </figcaption>
-                                   <video controls="controls" name="media" id="myvideo">
-                                        <source src="${album.data[y].preview}" type="audio/mpeg">
+            // // behemoth
 
-                                    </video>
-                                </figure>
+            // fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
+            //     method: "GET",
+            //     headers: headers
+            // })
 
-                            </li>                        
-                        `;
+            //     .then(function (display) {
 
-                    }
+            //         if (display.ok) {
+            //             return display.json();
+            //         }
+            //     })
+            //     .then(function (album) {
+
+            //         // get the parent element
+            //         var thirdUl = document.querySelector("#albumDetailsbehemoth");
+
+            //         for (y = 0; y < 4; y++) {
+
+            //             // display the content of the album
+            //             thirdUl.innerHTML +=
+            //                 `
+            //                 <li>
+            //                     <figure class="figure">
+            //                         <img src="${ album.data[y].album.cover_big}"
+            //                             class=" img-fluid rounded ml-2" alt="...">
+            //                         <figcaption class="text-center text-ligth">${ album.data[y].title} <br>
+            //                         </figcaption>
+
+            //                         <audio controls src="${album.data[y].preview}" type="audio/mpeg"></audio>
+            //                     </figure>
+
+            //                 </li>                        
+            //             `;
+            //         }
+            //     })
+            //     .catch(function (error) { });
 
 
-                })
-                .catch(function (error) { });
 
 
-            //Get second albums
-            //Get top 10 singles
 
 
-        }
 
 
 

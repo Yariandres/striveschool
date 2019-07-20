@@ -1,7 +1,7 @@
 #section-media {
     padding: 0 32px;
     margin: 0 auto;
-    max-width: 1480px;
+
 
     background-image: linear-gradient(to right bottom,
             rgb(18, 18, 18),
@@ -41,6 +41,8 @@
         margin: 24px 0;
     }
 
+
+
     #media-pics {
         ul {
 
@@ -61,4 +63,23 @@
             }
         }
     }
+
+    .playMe {
+        cursor: pointer;
+        font-size: 20px;
+        padding: 0 10px;
+
+    }
+
+    .playMe:hover {
+        border-radius: 20px;
+        background: greenyellow;
+        color: #000;
+    }
+
+    audio {
+        width: 210px;
+    }
+
+
 }
