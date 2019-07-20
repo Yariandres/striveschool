@@ -85,17 +85,18 @@
             })
                 .then(resp => resp.json())
                 .then(json => {
-                    // console.log(json.tracks.data)
+                    console.log(json);
+
                     var colOne = document.querySelector("#col-1");
                     colOne.innerHTML += `                        
                                     <div class="col text-center">                                
                                         <img src="${json.cover}" class="img-fluid" alt="album cover">
                                         <h2 class="text-light">${json.title}</h2>
                                     </div>              
-                            `;
+                                `;
 
                     json.tracks.data.forEach(function (soundTrack) {
-                        console.log(soundTrack)
+
                         var colTwo = document.querySelector("#col-2");
 
                         colTwo.innerHTML += `
@@ -104,7 +105,7 @@
                                             <li class="text-light">${soundTrack.title}<br>
                                                 <small>${soundTrack.artist.name}</small>                    
                                                 <span class="text-light text-right">length: ${soundTrack.duration}</span>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>   

@@ -142,6 +142,7 @@
         </div> <!-- row end -->
     </div><!-- container-fluid end  -->
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -162,7 +163,7 @@
         getTerm = () => {
 
             var headers = new Headers({
-
+                // api auth
                 "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
                 "X-RapidAPI-Key": "5c7836e096msh890d36fc1471580p1e54e7jsne47005d9e9ce"
             });
@@ -199,137 +200,25 @@
 
             // get list data
             list.data.forEach((album) => {
-                console.log(album.title)
+                console.log(album);
                 div.innerHTML += `
-                    <p>${album.title}</>
-                `;
+                        <div class="col-md-3 mb-4">
+                            <a href="detailpage.html?id=${album.album.id}">
+                                <img src="${ album.album.cover_big}" class="img-fluid" alt="album image">
+                            </a>
+                            <h3 class="text-light text-center mt-4">${album.title}</h3>
+                            
+                            <a href="#">
+                                <p class="text-light text-center font-weight-bold">${album.artist.name}</p>
+                            </a>
+                            
+
+                            <audio controls src="${album.preview}" type="audio/mpeg"></audio>
+                        </div> 
+                    `;
             });
         };
-
-
-
-
-        // for (i = 0; i < 3; i++) {
-
-        //     // display the content of the album
-        //     div.innerHTML +=
-        //         `
-        //                 <div class="col-md-3">
-        //                 <a href="detailpage.html?id=${album.data[i].album.id}">
-        //                     <img src="${ album.data[i].album.cover_big}" class="card-img-top" alt="album image">
-        //                 </a>
-        //                 <p class="text-light text-center my-4">${ album.data[i].title} 
-
-        //                     <audio controls src="${album.data[i].preview}" type="audio/mpeg"></audio>
-
-
-        //                 </p>
-
-        //             </div>                       
-        //         `;
-
-        // }
-
-
-
-
-
-
-
-            // METALICA
-
-            // fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
-            //     method: "GET",
-            //     headers: headers
-            // })
-
-            //     .then(function (result) {
-
-            //         if (result.ok) {
-            //             return result.json();
-            //         }
-            //     })
-            //     .then(function (album) {
-
-            //         // get the parent element
-            //         var secondtUl = document.querySelector("#albumDetailsMetali");
-
-            //         for (m = 0; m < 6; m++) {
-
-
-            //             // display the content of the album
-            //             secondtUl.innerHTML +=
-            //                 `
-            //                 <li>
-            //                     <figure class="figure">
-            //                         <img src="${ album.data[m].album.cover_big}"
-            //                             class=" img-fluid rounded ml-2" alt="...">
-            //                         <figcaption class="text-center text-ligth">${ album.data[m].title} <br>
-            //                         </figcaption>
-            //                         <audio controls src="${album.data[m].preview}" type="audio/mpeg"></audio>
-            //                     </figure>
-
-            //                 </li>                        
-            //             `;
-
-            //         }
-
-
-            //     })
-            //     .catch(function (error) { });
-
-
-            // // behemoth
-
-            // fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
-            //     method: "GET",
-            //     headers: headers
-            // })
-
-            //     .then(function (display) {
-
-            //         if (display.ok) {
-            //             return display.json();
-            //         }
-            //     })
-            //     .then(function (album) {
-
-            //         // get the parent element
-            //         var thirdUl = document.querySelector("#albumDetailsbehemoth");
-
-            //         for (y = 0; y < 4; y++) {
-
-            //             // display the content of the album
-            //             thirdUl.innerHTML +=
-            //                 `
-            //                 <li>
-            //                     <figure class="figure">
-            //                         <img src="${ album.data[y].album.cover_big}"
-            //                             class=" img-fluid rounded ml-2" alt="...">
-            //                         <figcaption class="text-center text-ligth">${ album.data[y].title} <br>
-            //                         </figcaption>
-
-            //                         <audio controls src="${album.data[y].preview}" type="audio/mpeg"></audio>
-            //                     </figure>
-
-            //                 </li>                        
-            //             `;
-            //         }
-            //     })
-            //     .catch(function (error) { });
-
-
-
-
-
-
-
-
-
-
-
     </script>
-
 
 </body>
 
