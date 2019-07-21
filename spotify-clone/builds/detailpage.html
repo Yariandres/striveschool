@@ -85,42 +85,42 @@
             })
                 .then(resp => resp.json())
                 .then(json => {
-                    console.log(json);
+                    // console.log(json);
 
                     var colOne = document.querySelector("#col-1");
                     colOne.innerHTML += `                        
-                                    <div class="col text-center">                                
-                                        <img src="${json.cover}" class="img-fluid" alt="album cover">
-                                        <h2 class="text-light">${json.title}</h2>
-                                    </div>              
-                                `;
+                                        <div class="col text-center">                                
+                                            <img src="${json.cover}" class="img-fluid" alt="album cover">
+                                            <h2 class="text-light">${json.title}</h2>
+                                        </div>              
+                                    `;
 
                     json.tracks.data.forEach(function (soundTrack) {
 
                         var colTwo = document.querySelector("#col-2");
 
                         colTwo.innerHTML += `
-                                    <div class="col">
-                                        <ul class="list-unstyled">
-                                            <li class="text-light">${soundTrack.title}<br>
-                                                <small>${soundTrack.artist.name}</small>                    
-                                                <span class="text-light text-right">length: ${soundTrack.duration}</span>
+                                        <div class="col">
+                                            <ul class="list-unstyled">
+                                                <li class="text-light">${soundTrack.title}<br>
+                                                    <small>${soundTrack.artist.name}</small>                    
+                                                    <span class="text-light text-right">length: ${soundTrack.duration}</span>
 
-                                            </li>
-                                        </ul>
-                                    </div>   
-                                `;
+                                                </li>
+                                            </ul>
+                                        </div>   
+                                    `;
 
                         var colThree = document.querySelector("#col-3");
                         colThree.innerHTML += `
-                                    <div class="col">             
-                                        <p class="text-right">
-                                            <a onclick="this.firstChild.play()">                                               
-                                                <audio controls src="${soundTrack.preview}" type="audio/mpeg"></audio>
-                                            </a>
-                                        </p>
-                                    </div>   
-                                `;
+                                        <div class="col">             
+                                            <p class="text-right">
+                                                <a onclick="this.firstChild.play()">                                               
+                                                    <audio controls src="${soundTrack.preview}" type="audio/mpeg"></audio>
+                                                </a>
+                                            </p>
+                                        </div>   
+                                    `;
                     });
                 })
         }
