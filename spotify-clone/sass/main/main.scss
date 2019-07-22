@@ -1,7 +1,7 @@
 #section-media {
     padding: 0 32px;
     margin: 0 auto;
-
+    height: 100%;
 
     background-image: linear-gradient(to right bottom,
             rgb(18, 18, 18),
@@ -9,7 +9,7 @@
         linear-gradient(transparent,
             rgb(0, 0, 0) 70%);
     background-image: linear-gradient(to right bottom,
-            rgb(142, 11, 24),
+            rgba(77, 1, 9, 0.726),
             rgb(0, 0, 0)),
         linear-gradient(transparent,
             rgb(0, 0, 0) 70%);
@@ -41,29 +41,6 @@
         margin: 24px 0;
     }
 
-
-
-    #media-pics {
-        ul {
-
-            li {
-                display: inline;
-
-                figure {
-
-                    img {
-                        max-width: 170px;
-                    }
-
-                    figcaption {
-                        margin-top: 10px;
-                        color: #fff;
-                    }
-                }
-            }
-        }
-    }
-
     .playMe {
         cursor: pointer;
         font-size: 20px;
@@ -78,7 +55,7 @@
     }
 
     audio {
-        width: 210px;
+        width: 100%;
     }
 
 

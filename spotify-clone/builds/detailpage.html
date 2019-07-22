@@ -43,6 +43,7 @@
 <body>
 
     <div class="container">
+        <a href="index.html">← Back to search</a>
         <div class="row mt-5">
             <div class="col" id="col-1">
                 <!-- image  -->
@@ -73,6 +74,7 @@
         window.onload = () => {
             var messageId = new URLSearchParams(document.location.search).get("id");
 
+
             var headers = new Headers({
 
                 "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
@@ -85,20 +87,25 @@
             })
                 .then(resp => resp.json())
                 .then(json => {
-                    // console.log(json);
+                    console.log(json);
 
+                    // get the col to insert album cover and name
                     var colOne = document.querySelector("#col-1");
+                    // insert html
                     colOne.innerHTML += `                        
                                         <div class="col text-center">                                
                                             <img src="${json.cover}" class="img-fluid" alt="album cover">
                                             <h2 class="text-light">${json.title}</h2>
                                         </div>              
                                     `;
+                    // set the title of the page
+                    document.title = json.artist.name;
 
+                    // loop for the API object
                     json.tracks.data.forEach(function (soundTrack) {
-
+                        // get the col 2 to display track list
                         var colTwo = document.querySelector("#col-2");
-
+                        // write the html
                         colTwo.innerHTML += `
                                         <div class="col">
                                             <ul class="list-unstyled">
@@ -110,7 +117,7 @@
                                             </ul>
                                         </div>   
                                     `;
-
+                        // get col 3 to display sound track preview
                         var colThree = document.querySelector("#col-3");
                         colThree.innerHTML += `
                                         <div class="col">             

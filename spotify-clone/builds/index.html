@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Potify Clone</title>
+    <title>Spotify Clone</title>
     <!-- custom css-->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid" id="side-navigation">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-none d-md-block sidebar">
 
                 <div class="sidebar-sticky fixed-top mt-4">
                     <a class="col-sm-3 col-md-2" href="#" style="color: white">
@@ -31,8 +31,27 @@
                                 <span class="pl-2 font-weight-bold text-light">Home</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="searchBtn" onclick="getTerm()">
+                            <!-- selection for album-->
+                            <div class="form-check mt-4 ml-3">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioAlbum"
+                                    value="album">
+                                <label class="form-check-label text-light" for="radioAlbum">
+                                    Album
+                                </label>
+                            </div>
+
+                            <div class="form-check ml-3">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioArtist"
+                                    value="artist">
+                                <label class="form-check-label text-light" for="radioArtist">
+                                    Artist
+                                </label>
+                            </div>
+                            <br>
+
+                            <a class="searchBtn" onclick="getData()">
                                 <svg viewBox="0 0 512 512" style="color: #fff;" width="24" height="24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -40,7 +59,11 @@
                                         fill="currentColor" fill-rule="evenodd"></path>
                                 </svg>
                             </a>
-                            <input type="text" id="search">
+
+                            <!-- search field -->
+                            <input class="search-field mb-4" type="text" id="search">
+
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -119,23 +142,6 @@
                     <div class="row" id="albumDetails">
                         <!-- list of album continer -->
                     </div>
-
-                    <!-- Metallica -->
-
-                    <h2 class="text-light mt-5">List for Metallica</h2>
-                    <ul id="albumDetailsMetali">
-                        <li class="list-item">
-
-                        </li>
-                    </ul>
-
-                    <!-- behemoth -->
-                    <h2 class="text-light mt-5">List for behemoth</h2>
-                    <ul id="albumDetailsbehemoth">
-                        <li class="list-item">
-
-                        </li>
-                    </ul>
                 </div>
             </main>
             <!-- MAIN END -->
@@ -157,16 +163,20 @@
 
     <!-- custom scripts -->
     <script>
+
         // create an empty albums array to hold the loaded data
         var albums = [];
 
-        getTerm = () => {
+        getData = () => {
 
             var headers = new Headers({
                 // api auth
                 "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
                 "X-RapidAPI-Key": "5c7836e096msh890d36fc1471580p1e54e7jsne47005d9e9ce"
             });
+
+            // get the search option album or artist
+            // var selection = document.querySelector('.form-check-input:checked').value;
 
             // get the search term
             var searTerm = document.querySelector("#search").value;
@@ -186,10 +196,15 @@
                 .then((json) => {
                     // creating JSON asigning to albums to store it
                     albums = json;
-                    // calls the  getAlbum function()
+                    // calls the  get Album function
                     getAlbum(albums);
+                    // get artist functionn
+                    // getArtist(artist);
+
                 });
         };
+
+
 
         getAlbum = (list) => {
             // get the parent element
@@ -202,21 +217,22 @@
             list.data.forEach((album) => {
                 console.log(album);
                 div.innerHTML += `
-                            <div class="col-md-3 mb-4">
+                            <div class="col-md-4 mb-4">
                                 <a href="detailpage.html?id=${album.album.id}">
-                                    <img src="${ album.album.cover_big}" class="img-fluid" alt="album image">
+                                    <img src="${album.album.cover_big}" class="img-fluid" alt="album image">
                                 </a>
                                 <h3 class="text-light text-center mt-4">${album.title}</h3>
                                 
                                 <a href="#">
                                     <p class="text-light text-center font-weight-bold">${album.artist.name}</p>
-                                </a>                                
+                                </a>                           
 
                                 <audio controls src="${album.preview}" type="audio/mpeg"></audio>
                             </div> 
                         `;
             });
         };
+
     </script>
 
 </body>

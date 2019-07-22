@@ -7035,8 +7035,9 @@ a.text-dark:hover, a.text-dark:focus {
 #section-media {
   padding: 0 32px;
   margin: 0 auto;
+  height: 100%;
   background-image: linear-gradient(to right bottom, #121212, black), linear-gradient(transparent, black 70%);
-  background-image: linear-gradient(to right bottom, #8e0b18, black), linear-gradient(transparent, black 70%); }
+  background-image: linear-gradient(to right bottom, rgba(77, 1, 9, 0.726), black), linear-gradient(transparent, black 70%); }
   #section-media .nav-main {
     margin: 0 auto; }
     #section-media .nav-main a {
@@ -7054,13 +7055,6 @@ a.text-dark:hover, a.text-dark:focus {
     letter-spacing: -.005em;
     text-transform: none;
     margin: 24px 0; }
-  #section-media #media-pics ul li {
-    display: inline; }
-    #section-media #media-pics ul li figure img {
-      max-width: 170px; }
-    #section-media #media-pics ul li figure figcaption {
-      margin-top: 10px;
-      color: #fff; }
   #section-media .playMe {
     cursor: pointer;
     font-size: 20px;
@@ -7070,17 +7064,17 @@ a.text-dark:hover, a.text-dark:focus {
     background: greenyellow;
     color: #000; }
   #section-media audio {
-    width: 210px; }
+    width: 100%; }
 
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic, sans-serif; }
+  font-family: Helvetica Neue, Helvetica, Arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic, sans-serif;
+  background-color: #000; }
 
 h1 {
   color: pink; }
 
 #side-navigation nav {
-  padding-top: 24px;
-  background-image: linear-gradient(to right bottom, #121212, black), linear-gradient(transparent, black 70%); }
+  padding-top: 24px; }
   #side-navigation nav a {
     font-size: 12px;
     line-height: 20px;
@@ -7099,8 +7093,8 @@ h1 {
     margin-left: 16px; }
   #side-navigation nav svg {
     cursor: pointer !important; }
-  #side-navigation nav input {
-    width: 10%;
+  #side-navigation nav .search-field {
+    width: 12%;
     margin: 10px 0;
     border-radius: 20px;
     border: 0;

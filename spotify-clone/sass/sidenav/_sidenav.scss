@@ -1,11 +1,10 @@
 #side-navigation {
+    // background-color: #000;
+
     nav {
         padding-top: 24px;
-        background-image: linear-gradient(to right bottom,
-                rgb(18, 18, 18),
-                rgb(0, 0, 0)),
-            linear-gradient(transparent,
-                rgb(0, 0, 0) 70%);
+
+
 
         a {
             font-size: 12px;
@@ -38,8 +37,8 @@
 
         }
 
-        input {
-            width: 10%;
+        .search-field {
+            width: 12%;
             margin: 10px 0;
             border-radius: 20px;
             border: 0;
