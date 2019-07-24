@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>D4 Homework 18/07/2019</title>
+    <title></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,8 +52,8 @@
             }
         }
 
-        #addBadge,
-        #skipBadge {
+        .addBadge,
+        .skipBadge {
             visibility: hidden;
         }
     </style>
@@ -64,7 +64,7 @@
         <div class="navbar navbar-dark bg-dark shadow-sm fixed-top">
             <div class="container d-flex justify-content-end">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <strong>My List </strong><span class="badge badge-success ml-2" id="totalProducts"> 4</span>
+                    <strong>My List </strong><span class="badge badge-success ml-2" id="totalProducts"> 0</span>
                 </a>
             </div>
         </div>
@@ -118,6 +118,8 @@
 
     <script>
 
+        document.title = "e-commerce Cart"
+
         var products = [];
         var Mylist = [];
 
@@ -144,17 +146,17 @@
             // creating the teplate literal
             listOfproducts.forEach((product) => {
                 row.innerHTML += `
-                    <div class="col-md-3" id="productCard"> 
-                        <span class="badge badge-success" id="addBadge">Added</span>
-                        <span class="badge badge-danger" id="skipBadge">Skipped</span>
+                    <div class="col-md-3 productCard" id="${product.asin}"> 
+                        <span class="badge badge-success addBadge">Added</span>
+                        <span class="badge badge-danger skipBadge">Skipped</span>
                         <div class="card mb-4 shadow-sm">
                             <img class="img-fluid" src="${product.img}" alt="">
                             <div class="card-body">
                                 <p class="card-text">${product.title}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-primary" id="addProduct" onclick="changeStyle();">add to cart</button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="hideCard()">Skip</button>
+                                        <button type="button" class="btn btn-sm btn-outline-primary" id="addProduct" onclick="changeStyle(this);">add to cart</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="hideCard(this);">Skip</button>
                                     </div>
                                     <small class="text-muted"><strong> Price: ${product.price}$</strong></small>
                                 </div>
@@ -165,12 +167,23 @@
             });
         }
 
-        changeStyle = () => {
+        changeStyle = (btn) => {
 
-            // get Element
-            var div = document.querySelector("#productCard");
-            // get the badge
-            var badge = document.querySelector("#addBadge");
+            // finding the closest element
+            var div = btn.closest(".productCard");
+
+            // getting the asin number of the product
+            var asin = div.getAttribute("id");
+
+            // pushing it to myList array
+            Mylist.push(asin);
+
+            // getting the el with the #totalProducts and writing inside
+            document.querySelector("#totalProducts").innerText = Mylist.length;
+
+            // getting a reference to the badge element
+            var badge = div.querySelector(".addBadge");
+
             // set visibility to visible when botton is clicked
             badge.style.visibility = 'visible';
 
@@ -181,14 +194,16 @@
             }, 3000);
         }
 
-
-
         // create a function to hide an element
-        hideCard = () => {
-            // get the element to remove
-            var div = document.querySelector("#productCard");
-            // get the badge
-            var badge = document.querySelector("#skipBadge");
+        hideCard = (btn) => {
+
+            // finding the closest element
+            var div = btn.closest(".productCard");
+
+            // getting a reference to the badge element
+            var badge = div.querySelector(".skipBadge");
+
+
             // set visibility to visible when botton is clicked
             badge.style.visibility = 'visible';
 
@@ -198,8 +213,9 @@
                 div.remove();
             }, 3000);
 
-
         }
+
+
 
     </script>
 

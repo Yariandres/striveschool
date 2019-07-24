@@ -51,27 +51,53 @@
 ​
         You can also start from the previous marketplace.​
     -->
+<style>
+    form {
+        background: #E9ECEF;
+    }
+</style>
 
 <body>
-    <h1>Amazon back office</h1>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
 
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <form class="border p-5 shadow-sm">
+                        <p class="lead">Amazon Back Office</p>
+                        <div class="form-group">
+                            <label for="name">Product name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                placeholder="" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                        </div>
+                        <!-- brand -->
+                        <div class="form-group">
+                            <label for="brand">Brand name</label>
+                            <input type="text" class="form-control" id="brand" aria-describedby="emailHelp"
+                                placeholder="" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="url">url</label>
+                            <input type="text" class="form-control" id="url" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="url" placeholder="">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <!-- bootstrap js helpers -->
