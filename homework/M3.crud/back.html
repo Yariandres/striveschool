@@ -63,13 +63,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
+                    <!-- form -->
                     <form class="border p-5 shadow-sm">
                         <p class="lead">Amazon Back Office</p>
                         <div class="form-group">
                             <label for="name">Product name</label>
                             <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
                                 placeholder="" required>
-
                         </div>
 
                         <div class="form-group">
@@ -89,16 +89,73 @@
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" class="form-control" id="url" placeholder="">
+                            <input type="number" class="form-control" id="price" placeholder="">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" onclick="submitEvent()">Add Product</button>
                     </form>
+                </div>
+                <div class="col-6" id="myProduct">
+
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+<script src="js/helper.js"></script>
+
+<script>
+    // setting the page title
+    document.title = "M3 Crud";
+
+    window.onload = async () => {
+
+        var events = await getEvents();
+
+        var myEvents = document.querySelector("#myProduct");
+
+        if (events.length > 0) {
+            myEvents.innerHTML = events.map(event => `<div>
+                ${event.time}: ${event.name} - ${event.description}</div>`).join("");
+            console.log(events)
+        } else {
+            myEvents.innerHTML = `<h3>Infomation will be displayed here!</h3>`;
+        }
+
+        submitEvent = async () => {
+
+            var myEvent = {
+                name: document.querySelector("#name").value,
+                description: document.querySelector("#description").value,
+                brand: document.querySelector("#brand").value,
+                url: document.querySelector("#url").value,
+                url: document.querySelector("#price").value
+            };
+
+            console.log(name)
+            console.log(description)
+            console.log(brand)
+            console.log(url)
+            console.log(price)
+
+
+            // headers.set('Authorization', 'Basic ' + btoa(authString))
+
+            fetch(url, { method: 'GET', headers: headers })
+                .then(function (response) {
+                    console.log(response)
+                    return response
+
+                    var json = response.json();
+                    console.log(json);
+                });
+
+        }
+
+    }
+
+</script>
 
 <!-- bootstrap js helpers -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -110,12 +167,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-<script>
-    // setting the page title
-    document.title = "M3 Crud";
-
-
-</script>
 
 </html>
