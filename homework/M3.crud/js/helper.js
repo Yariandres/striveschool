@@ -1,24 +1,18 @@
     getEvents = async () => {
-
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
-        const url = "https://cors-anywhere.herokuapp.com/https://strive-school-testing-apis.herokuapp.com/api/product/"; // site that doesn’t send Access-Control-*
-
-        let username = 'user10';
-        let password = 'hmWhr9ktc4bejjTg';
-
-        let authString = `${username}:${password}`
-
-        let headers = new Headers({
-            "content-type": "application/json",
+        var myHeaders = new Headers({
+            "Authorization": "Basic " + btoa("admin:supersecret"),
+            "Content-Type": "application/json"
         });
 
-        headers.set('Authorization', 'Basic ' + btoa(authString))
+        window.onload = async () => {
+            var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
+                headers: myHeaders
+            });
 
-        var response = await fetch(url, {
-            method: 'POST',
-            headers: headers
-        });
+            products = await response.json();
+            return await response.json();
 
-        return await response.json();
+        };
+        console.log(getEvents())
+
     }

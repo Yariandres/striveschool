@@ -55,52 +55,56 @@
     form {
         background: #E9ECEF;
     }
+
+    #myProducts {
+        margin: 0 auto;
+    }
 </style>
 
-<body>
+<body> ​
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
 
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <!-- form -->
-                    <form class="border p-5 shadow-sm">
-                        <p class="lead">Amazon Back Office</p>
-                        <div class="form-group">
-                            <label for="name">Product name</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
-                                placeholder="" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" id="description" rows="3"></textarea>
-                        </div>
-                        <!-- brand -->
-                        <div class="form-group">
-                            <label for="brand">Brand name</label>
-                            <input type="text" class="form-control" id="brand" aria-describedby="emailHelp"
-                                placeholder="" required>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="url">url</label>
-                            <input type="text" class="form-control" id="url" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" class="form-control" id="price" placeholder="">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" onclick="submitEvent()">Add Product</button>
-                    </form>
-                </div>
-                <div class="col-6" id="myProduct">
-
-                </div>
+                <form class="border p-5 shadow-sm" onsubmit="submitProduct()">
+                    <p class="lead text-uppercase">Amazon back office</p>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Product name" required />
+                    </div>
+                    ​
+                    <div class="form-group">
+                        <label for="description">Details</label>
+                        <textarea class="form-control" id="description" rows="3" required></textarea>
+                    </div>
+                    ​
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+                        <input type="text" class="form-control" id="brand" placeholder="Brand" />
+                    </div>
+                    ​
+                    <div class="form-group">
+                        <label for="imageUrl">Image URL</label>
+                        <input type="text" class="form-control" id="imageUrl" placeholder="Url" />
+                    </div>
+                    ​
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Price" required />
+                    </div>
+                    ​
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Add Product" />
+                    </div>
+                </form>
+            </div>
+            ​
+            <div class="col-md-6" id="myProducts">
+                <!-- dynamic content here -->
             </div>
         </div>
     </div>
+
 </body>
 
 <script src="js/helper.js"></script>
@@ -109,51 +113,66 @@
     // setting the page title
     document.title = "M3 Crud";
 
+    // creating an palce holder array
+    var products = [];
+
+    var myHeaders = new Headers({
+        "Authorization": "Basic " + btoa("admin:supersecret"),
+        "Content-Type": "application/json"
+    });
+
     window.onload = async () => {
+        var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
+            headers: myHeaders
+        });
+        products = await response.json();
 
-        var events = await getEvents();
+        document.querySelector("#myProducts").innerHTML = products.map(p => `
+                <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
 
-        var myEvents = document.querySelector("#myProduct");
+                    <img class="img-fluid mt-4"  src="${p.imageUrl}"></img>
 
-        if (events.length > 0) {
-            myEvents.innerHTML = events.map(event => `<div>
-                ${event.time}: ${event.name} - ${event.description}</div>`).join("");
-            console.log(events)
-        } else {
-            myEvents.innerHTML = `<h3>Infomation will be displayed here!</h3>`;
-        }
+                    <div class="card-body">
+                    <p class="card-text">${p.description}</p>
 
-        submitEvent = async () => {
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
 
-            var myEvent = {
-                name: document.querySelector("#name").value,
-                description: document.querySelector("#description").value,
-                brand: document.querySelector("#brand").value,
-                url: document.querySelector("#url").value,
-                url: document.querySelector("#price").value
-            };
+                        <a href="${p.imageUrl}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
 
-            console.log(name)
-            console.log(description)
-            console.log(brand)
-            console.log(url)
-            console.log(price)
+                        <a type="button" class="btn btn-sm btn-outline-secondary">Remove</a>
+
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
+                </div>   
+
+            `).join("");
+    };
+
+    submitProduct = async () => {
 
 
-            // headers.set('Authorization', 'Basic ' + btoa(authString))
+        var myProduct = {
+            name: document.querySelector("#name").value,
+            description: document.querySelector("#description").value,
+            brand: document.querySelector("#brand").value,
+            price: document.querySelector("#price").value,
+            imageUrl: document.querySelector("#imageUrl").value,
+        };
 
-            fetch(url, { method: 'GET', headers: headers })
-                .then(function (response) {
-                    console.log(response)
-                    return response
+        var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
+            method: "POST",
+            body: JSON.stringify(myProduct),
+            headers: myHeaders
+        });
 
-                    var json = response.json();
-                    console.log(json);
-                });
-
-        }
-
-    }
+        var productResponse = await response.json();
+        console.log(productResponse);
+    };
 
 </script>
 
