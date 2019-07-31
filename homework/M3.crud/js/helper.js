@@ -1,18 +1,11 @@
-    getEvents = async () => {
-        var myHeaders = new Headers({
-            "Authorization": "Basic " + btoa("admin:supersecret"),
-            "Content-Type": "application/json"
-        });
+getEvents = async () => {
+    const url = "https://strivetestapi.azurewebsites.net/api/agenda/"; // site that doesn’t send Access-Control-*
+    var response = await fetch(url);
+    return await response.json();
+};
 
-        window.onload = async () => {
-            var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
-                headers: myHeaders
-            });
-
-            products = await response.json();
-            return await response.json();
-
-        };
-        console.log(getEvents())
-
-    }
+getEvent = async id => {
+    const url = `https://strivetestapi.azurewebsites.net/api/agenda/${id}`; // site that doesn’t send Access-Control-*
+    var response = await fetch(url);
+    return await response.json();
+};

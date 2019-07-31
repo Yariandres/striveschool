@@ -139,17 +139,19 @@
 
 
         //STEP 3: print out the result to the page
+
+        // getting reference to the div to display the number of categories
         document.querySelector('#totalCategories').innerHTML = `
           <div>
             <h6 class="my-0">Total Categories</h6>
           </div>
           <span class="text-muted">${categoryList.length}</span>                      
         `;
-
+        // getting reference to the div to display the details
         document.querySelector('#moviesInCategoryList').innerHTML += ` 
           <ul class="list-group">${moviesInCategory.map(movie => "<li class='list-group-item'>" + movie.name + "</li>").join("")}
           </ul>
-          `;
+        `;
 
 
        
