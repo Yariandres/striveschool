@@ -9,6 +9,7 @@ class Fantasy extends Component {
           return <h1>{ filmDetail.title }</h1>
 
         })}
+        
       </div>
     )
   } 
