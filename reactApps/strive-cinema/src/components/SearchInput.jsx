@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import DisplaySearch from './DisplaySearch';
 
 import {
   Form,
@@ -25,19 +26,19 @@ export default class SearchInput extends React.Component {
     })
   }
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
 
-    await axios(`http://www.omdbapi.com/?i=tt3896198&apikey=b4b1863b&s=${this.state.name}`)
+    axios(`http://www.omdbapi.com/?i=tt3896198&apikey=b4b1863b&s=${this.state.name}`)
     .then(res => {      
       this.setState({
         films: res.data.Search
-      })
-      console.log(this.state.films)
+      })      
     })
   }
 
   render() {
+    console.log(this.state.films)
     return (
       <div className="container-fluid">
         <Row className="my-5">
@@ -48,13 +49,14 @@ export default class SearchInput extends React.Component {
                   <Input type="text" name="search" id="search" placeholder="search" onChange={this.handleChange}/>
                 </Col>
                 <Col md={3} sm={4}>                                             
-                  <Button type="submit" className="danger">Go</Button>                      
+                  <Button type="submit" className="danger">Go</Button>  
                 </Col>
               </Row> 
             </Form>   
           </Col>
         </Row>
-                    
+        {/* passing the data recived as props */}
+        <DisplaySearch films={this.state.films}/>           
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import SearchInput from './components/SearchInput';
+
 import FavGallery from './components/FavGallery';
 import FavSaga from './components/FavSaga';
 import FavSagaNow from './components/FavSagaNow';
@@ -24,7 +25,5 @@ class App extends React.Component {
     )
   }
 }
-
-
 
 export default App;
