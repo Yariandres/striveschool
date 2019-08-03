@@ -15,13 +15,8 @@ export default class FavSaga extends React.Component {
     // set the innitial state
     this.state = {
       films: [],
-    }
+    }    
   }
-
-  // submitHandler = async (event) => {
-  //   event.preventDefault();
-  //   // loadData()
-  // }
 
   componentWillMount = () => {
     axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=b4b1863b&s=dragon%20ball%20z")
@@ -32,8 +27,11 @@ export default class FavSaga extends React.Component {
       })
     })    
   }
+
+  
   
   render() {
+    // console.log(this.state.films);
     return (
       <div className="container-fluid text-light mt-4">        
         <Row>
