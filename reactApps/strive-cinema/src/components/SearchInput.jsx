@@ -17,6 +17,7 @@ export default class SearchInput extends React.Component {
     // set the innitial state
     this.state = {
       name: '',
+      films: ''
     }
   }
 
@@ -29,16 +30,20 @@ export default class SearchInput extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios(`http://www.omdbapi.com/?i=tt3896198&apikey=b4b1863b&s=${this.state.name}`)
-    .then(res => {      
+    const url = `http://www.omdbapi.com/?i=tt3896198&apikey=b4b1863b&s=${this.state.name}`; 
+
+    axios.get(url)
+    .then(res => {
+      console.log(res.data.Search)
       this.setState({
         films: res.data.Search
-      })      
-    })
+      })
+    })       
+    .catch(err => console.log(err))    
   }
 
   render() {
-    console.log(this.state.films)
+    // console.log(this.state.films)
     return (
       <div className="container-fluid">
         <Row className="my-5">
