@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import DisplaySearch from './DisplaySearch';
+import MovieDetails from './MovieDetails';
 
 import {
   Form,
@@ -17,7 +18,8 @@ export default class SearchInput extends React.Component {
     // set the innitial state
     this.state = {
       name: '',
-      films: ''
+      films: '',
+      selectedMovie: null
     }
   }
 
@@ -60,8 +62,17 @@ export default class SearchInput extends React.Component {
             </Form>   
           </Col>
         </Row>
+
+        {this.state.selectedMovie &&
+        <MovieDetails imdbID={this.state.selectedMovie}/>} 
+
         {/* passing the data recived as props */}
-        <DisplaySearch films={this.state.films}/>           
+        <DisplaySearch 
+          films={this.state.films} 
+          keyword={this.state.name} 
+          onMovieClicked={(imdbID) => this.setState({ selectedMovie: imdbID })}/>
+
+
       </div>
     );
   }

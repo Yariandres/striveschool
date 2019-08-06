@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Navbar,
-  NavbarBrand,
   Nav,
-  NavItem,
-  NavLink } from 'reactstrap';
+  NavItem
+  } from 'reactstrap';
 
 export default class NavBar extends React.Component {
 
@@ -14,11 +14,27 @@ export default class NavBar extends React.Component {
       <div>
         <Navbar color="dark" dark expand="md">      
             <Nav navbar>
+              <NavItem>                
+                  <Link to="/FavGallery">Favourites Sagas</Link>                
+              </NavItem>
+
+              <NavItem className="mx-2">
+                <Link to="/FavSaga">
+                 Recent
+                </Link>                
+              </NavItem>
+
+
               <NavItem>
-                <NavLink href="/components/">Movies</NavLink>
-              </NavItem>              
+                <Link to="/FavSagaNow">
+                  Action
+                </Link>
+              </NavItem>            
             </Nav>
-            <NavbarBrand className="ml-auto" href="/">Strive-Cinema</NavbarBrand>       
+
+                
+            <Link to="/" className="ml-auto navbrand text-light">Strive-Cinema</Link>  
+         
 
         </Navbar>
       </div>

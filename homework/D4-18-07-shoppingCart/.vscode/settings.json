@@ -103,13 +103,13 @@
             },
             {
                 "scope": [
-                    "support.class"
+                    "comment"
                 ],
                 "settings": {
-                    "foreground": "#ff9100",
+                    "foreground": "#52414a",
                 }
             },
         ]
         
-    },
+    }, 
 }

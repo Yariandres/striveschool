@@ -25,26 +25,24 @@ export default class FavGallery extends React.Component {
       this.setState({
         films: res.data.Search
       })
-      // console.log(res.data.Search)
     })    
   }
   
   render() {
     return (
       <div className="container-fluid text-light mt-4">
-        <h2 className="lead mt-5 mb-4">Favourite Sagas</h2>
+        <h3 className="lead mt-5 mb-4">Favourite Sagas</h3>
         <Row>
-        {this.state.films.slice(0, 6).map(film =>        
-          <Col key={film.imdbID} sm="3" md="2">
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-                <CardImg src={film.Poster} alt="film"/>
-                <CardTitle>{film.Title}</CardTitle>
-                <small>{film.Year}</small>
-            </Card>
-          </Col>
-        
-      )}
-      </Row> 
+          {this.state.films.slice(0, 6).map(film =>        
+            <Col key={film.imdbID} sm="3" md="2">
+              <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+                  <CardImg src={film.Poster} alt="film"/>
+                  <CardTitle>{film.Title}</CardTitle>
+                  <small>{film.Year}</small>
+              </Card>
+            </Col>        
+          )}
+        </Row> 
       </div>
     );
   }
