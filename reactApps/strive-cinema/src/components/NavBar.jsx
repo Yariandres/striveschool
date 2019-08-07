@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import {
   Navbar,
   Nav,
-  NavItem
+  NavItem,
+  Button
   } from 'reactstrap';
 
 export default class NavBar extends React.Component {
@@ -15,7 +16,7 @@ export default class NavBar extends React.Component {
         <Navbar color="dark" dark expand="md">      
             <Nav navbar>
               <NavItem>                
-                  <Link to="/FavGallery">Favourites Sagas</Link>                
+                  <Link to="/FavGallery">Favourites</Link>                
               </NavItem>
 
               <NavItem className="mx-2">
@@ -29,12 +30,15 @@ export default class NavBar extends React.Component {
                 <Link to="/FavSagaNow">
                   Action
                 </Link>
-              </NavItem>            
+              </NavItem>          
             </Nav>
 
                 
-            <Link to="/" className="ml-auto navbrand text-light">Strive-Cinema</Link>  
-         
+            <Link to="/" className="ml-auto navbrand text-light mr-4">Strive-Cinema</Link>
+
+            <Link to="/Register"><Button outline color="success">Register</Button>{' '}</Link>
+              
+            
 
         </Navbar>
       </div>

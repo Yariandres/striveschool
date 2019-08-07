@@ -6,7 +6,7 @@ import FavSaga from './components/FavSaga';
 import FavSagaNow from './components/FavSagaNow';
 import MovieDetails from './components/MovieDetails';
 import Home from './components/Home';
-
+import Register from './components/Register';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './style/App.css';
@@ -20,6 +20,7 @@ class App extends React.Component {
         <div className="App">
           <NavBar/>
           <Route path="/" exact render={() => <><Home/><SearchInput/></>}/>
+          <Route path="/Register" component={Register}/>          
           <Route path="/FavGallery" render={() => <><SearchInput/><FavGallery/></>}/>
           <Route path="/FavSagaNow" render={() => <><SearchInput/><FavSagaNow/></>}/>
           <Route path="/FavSaga" render={() => <><SearchInput/><FavSaga/></>}/>
