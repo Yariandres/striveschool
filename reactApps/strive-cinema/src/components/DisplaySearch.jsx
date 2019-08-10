@@ -30,35 +30,44 @@ export default class DisplaySearch extends React.Component {
   }
 
   render() {
-    return (
-      <div className="container-fluid text-light">
-        <h2 className="text-light my-2">
-          Search display for: 
-          <span 
-            className="lead ml-2" 
-            style={this.termStyle()}>{this.props.keyword}
-          </span>
-        </h2>
-        <Row>            
-          {Object.values(this.props.films).map((film, index) =>
-            <Col key={index} sm="3" md="2" className="text-light">{film.Title}
-              <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333'}}>
+    if (!this.props.films) {
+      return <h2 className="text-light">Search for your favourite movies!</h2>;
+    } 
+    if (!this.props.length) {
+      return (
+        <div className="container-fluid text-light">
+          <h2 className="text-light">
+            Search display for: 
+            <span 
+              className="lead ml-2" 
+              style={this.termStyle()}>{this.props.keyword}
+            </span>
+          </h2>
+          <Row className="mt-4">            
+            {Object.values(this.props.films).map((film, index) =>
+              <Col key={index} sm="3" md="2" className="text-light">{film.Title}
+                <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333'}}>
+  
+                  <Link to={"/details/"+film.imdbID}>
+                    <CardImg 
+                    src={film.Poster} 
+                    alt="film" 
+                    />
+                  </Link>
+  
+                <CardTitle>{film.Title}</CardTitle>
+                <small>{film.Year} {film.imdbID}</small>
+                </Card>              
+              </Col>
+            )}
+          </Row>
+        </div>
+      );
 
-                <Link to={"/details/"+film.imdbID}>
-                  <CardImg 
-                  src={film.Poster} 
-                  alt="film" 
-                  />
-                </Link>
-
-              <CardTitle>{film.Title}</CardTitle>
-              <small>{film.Year} {film.imdbID}</small>
-              </Card>              
-            </Col>
-          )}
-        </Row>
-      </div>
-    );
+    } else {
+      
+    }
+    
   }
 }
 

@@ -67,12 +67,10 @@ export default class SearchInput extends React.Component {
         <MovieDetails imdbID={this.state.selectedMovie}/>} 
 
         {/* passing the data recived as props */}
-        <DisplaySearch 
+        <DisplaySearch
           films={this.state.films} 
           keyword={this.state.name} 
           onMovieClicked={(imdbID) => this.setState({ selectedMovie: imdbID })}/>
-
-
       </div>
     );
   }

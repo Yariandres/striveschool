@@ -91,23 +91,27 @@ export default class Register extends React.Component {
                       maxLengthValidator: "The name field should have max 20 chars"
                     }}/>
                 </p>              
-                  
               </FormGroup>
-              <Label 
-                className="text-light" 
-                for="surname">Surname</Label>
+
+              
 
               <FormGroup>
-              <Control.text
-                id="surname"
-                model=".surname"
-                className="form-control"
-                placeholder="Your surname"
-                validators={{
-                  requiredValidator,
-                  minLengthValidator: minLengthValidator(2),
-                  maxLengthValidator: maxLengthValidator(20)
-                }}/>
+                <Label 
+                  className="text-light" 
+                  for="surname">
+                    Surname
+                </Label>
+                
+                <Control.text
+                  id="surname"
+                  model=".surname"
+                  className="form-control"
+                  placeholder="Your surname"
+                  validators={{
+                    requiredValidator,
+                    minLengthValidator: minLengthValidator(2),
+                    maxLengthValidator: maxLengthValidator(20)
+                  }}/>
 
                 <p className="text-light">
                   <Errors
@@ -119,7 +123,7 @@ export default class Register extends React.Component {
                       minLengthValidator: "The surname field should have at least 2 chars",
                       maxLengthValidator: "The surname field should have max 20 chars"
                     }}/>
-                  </p>                  
+                </p>                  
               </FormGroup>
               
               <FormGroup>

@@ -25,22 +25,17 @@ export default class NavBar extends React.Component {
                 </Link>                
               </NavItem>
 
-
               <NavItem>
                 <Link to="/FavSagaNow">
                   Action
                 </Link>
               </NavItem>          
-            </Nav>
+            </Nav> 
 
-                
-            <Link to="/" className="ml-auto navbrand text-light mr-4">Strive-Cinema</Link>
-
-            <Link to="/Register"><Button outline color="success">Register</Button>{' '}</Link>
-              
-            
-
-        </Navbar>
+              <Link to="/" className="ml-auto navbrand text-light mr-4">Strive-Cinema</Link>
+              <Link to="/Register"><Button outline color="success">Register</Button>{' '}
+            </Link>
+          </Navbar>
       </div>
     );
   }
