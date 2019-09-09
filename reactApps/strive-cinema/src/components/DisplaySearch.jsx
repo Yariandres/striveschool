@@ -51,7 +51,7 @@ export default class DisplaySearch extends React.Component {
                   <Link to={"/details/"+film.imdbID}>
                     <CardImg 
                     src={film.Poster} 
-                    alt="film" 
+                    alt="film"
                     />
                   </Link>
   

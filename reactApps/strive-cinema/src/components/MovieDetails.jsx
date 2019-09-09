@@ -9,7 +9,7 @@ export default class MovieDetails extends React.Component {
 				movie: null
 			}
 		}
-
+		
     render() {
 			console.log(this.state.movie)
 			return (
@@ -46,9 +46,7 @@ export default class MovieDetails extends React.Component {
             var response = await fetch("http://www.omdbapi.com/?apikey=b4b1863b&i="+ this.props.match.params.id);
             var movie = await response.json();
 
-						this.setState({ movie: movie });
-						
-           
+						this.setState({ movie: movie });   
             
 				}
 				console.log("Update" + this.props.match.params.id)
