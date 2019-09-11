@@ -2,15 +2,17 @@ const express = require('express');
 const listRoutes = require('express-list-endpoints');
 const bodyParser = require('body-parser');
 
-const userRoutes = require('./services/users');
-const bookRoutes = require('./services/books');
+const usersRoutes = require('./services/users');
+const booksRoutes = require('./services/books');
 
 const server = express();
 
+server.use(bodyParser.json());
+
 console.log('Before mounting');
 
-server.use('/users', userRoutes);
-server.use('/book', bookRoutes);
+server.use('/users', usersRoutes);
+server.use('/books', booksRoutes);
 
 console.log(listRoutes(server));
 
