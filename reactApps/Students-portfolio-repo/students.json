@@ -1,0 +1,29 @@
+[
+  [
+    {
+      "Name": "Peter",
+      "Surname": "Pan",
+      "Email": "pan@strive.school",
+      "DateofBirth": "13/09/2019",
+      "ID": 1
+    }
+  ],
+  [
+    {
+      "Name": "John",
+      "Surname": "Potter",
+      "Email": "john@strive.school",
+      "DateofBirth": "1/09/2019",
+      "ID": 2
+    }
+  ],
+  [
+    {
+      "Name": "Yari",
+      "Surname": "Smith",
+      "Email": "yari@strive.school",
+      "DateofBirth": "19/04/2019",
+      "ID": 3
+    }
+  ]
+]

@@ -1,20 +1,16 @@
 const express = require('express');
-const listRoutes = require('express-list-endpoints');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const studentsRoutes = require('./services/students');
+const projectsRouter = require('./services/projects');
 
-const app = express();
+const server = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+server.use(cors());
+server.use(bodyParser.json());
 
-console.log('Before mounting');
+server.use('/students', studentsRoutes);
+server.use('/projects', projectsRouter);
 
-app.use('/students', studentsRoutes);
-
-console.log(listRoutes(app));
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(3000, () => console.log(`Example app listening on port 3000!`));
+server.listen(3550, () => console.log(`Example app listening on port 3550!`));
