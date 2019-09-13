@@ -16,8 +16,8 @@ router.get("/:id", (req, res) => {
   var buffer = fs.readFileSync("products.json")
   var content = buffer.toString()
 
-  var productID = JSON.parse(content);
-  var product = productID.find(x => x._id == req.params.id)
+  var productsID = JSON.parse(content);
+  var product = productsID.find(x => x._id == req.params.id)
   if (!product)
     res.send("Cannot find product")
   else 
