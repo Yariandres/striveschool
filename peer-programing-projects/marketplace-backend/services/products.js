@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
     res.send(product)
 })
 
-// GET PRODUCT 
+// GET PRODUCT REVIEWS
 router.get("/reviews/:id", (req, res) => {
   var buffer = fs.readFileSync("reviews.json")
   var content = buffer.toString()
