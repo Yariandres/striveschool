@@ -42,5 +42,36 @@ router.post("/", (request, response) => {
 
   productsDB.push(newProduct)
 
-  fs.writeFileSync("products.json")
+  fs.writeFileSync("products.json", JSON.string(productsDB))
+
+  response.send(productsDB)
 })
+
+// DELETE PRODUCT
+router.delete("/:id", (req, res) => {
+   var buffer = fs.readFileSync("products.json")
+   var content = buffer.toString() 
+   var productsDB = JSON.parse(content)
+   var newDB = productsDB.filter(x => x._id != req.params.id)
+
+   res.send(newDB)
+})
+
+// UPDATE PRODUCT
+router.put("/:id", (req, res) => {
+  var buffer = fs.readFileSync("products.json")
+  var content = buffer.toString()
+  var productsDB = JSON.parse(content)
+
+  // Removing previous item/product
+  var newDB = productsDB.filter(x => x._id != req.params.id)
+  var product = req.body
+  var product._id = req.params.id
+
+  // adding the new product
+  newDB.push(product)
+
+  res.send(newDB)
+})
+
+module.exports = router
