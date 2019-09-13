@@ -30,5 +30,17 @@ router.get("/reviews/:id", (req, res) => {
   var content = buffer.toString()
   var reviews = JSON.parse(content);
 
-  res.send(projects.filter(x => x.ProductID == req.params.id))
+  res.send(reviews.filter(x => x._id == req.params.id))
+})
+
+router.post("/", (request, response) => {
+  var newProduct = request.body;
+
+  buffer = fs.readFileSync("products.json")
+  var content = buffer.toString()
+  var productsDB = JSON.parse(content)
+
+  productsDB.push(newProduct)
+
+  fs.writeFileSync("products.json")
 })
