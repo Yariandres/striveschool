@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
   var review = reviewID.find(x => x._id == req.params.id)
   if (!product)
     res.send("Cannot find product")
-  else 
+  else
     res.send(review)
 })
 
@@ -29,7 +29,10 @@ router.post("/", (request, response) => {
   var content = buffer.toString()
   var reviewsDB = JSON.parse(content)
 
-  newReview._id = reviewsDB.length + 1;
+  newReview.id = reviewsDB.length + 1
+  newReview.elementId = reviewsDB.length + 1
+
+  newReview.createdAt = new Date()
 
   reviewsDB.push(newReview)
 

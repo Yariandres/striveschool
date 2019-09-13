@@ -42,7 +42,6 @@ router.post("/", (request, response) => {
   var productsDB = JSON.parse(content)
 
   newProduct.id = productsDB.length + 1
-
   newProduct.createdAt = new Date()
 
   productsDB.push(newProduct)
