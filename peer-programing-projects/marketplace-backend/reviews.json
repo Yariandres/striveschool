@@ -1,1 +1,16 @@
-[{"_id":"","comment":"nice phone but I prefer another","rate":3,"elementId":"","createdAt":""},{"_id":2,"comment":"Love this phone so cool","rate":5,"elementId":"","createdAt":""}]
+[
+  {
+    "_id": "",
+    "comment": "nice phone but I prefer another",
+    "rate": 3,
+    "elementId": "",
+    "createdAt": ""
+  },
+  {
+    "_id": 2,
+    "comment": "Love this phone so cool",
+    "rate": 5,
+    "elementId": "",
+    "createdAt": ""
+  }
+]
