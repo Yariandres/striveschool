@@ -2,12 +2,16 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 
+const productsRouter = require("./services/products")
+
 const server = express()
 server.get('/', (req, res) => res.send('Marketplace server is running!'))
 const port = 3550
 
 server.use(cors())
 server.use(bodyParser.json())
+
+server.use('/products', productsRouter);
 
 
 server.listen(port, () => {

@@ -17,7 +17,7 @@ router.get("/:id", (req, res) => {
   var content = buffer.toString()
 
   var productID = JSON.parse(content);
-  var product = productID.find(x => x.ID == req.params.id)
+  var product = productID.find(x => x._id == req.params.id)
   if (!product)
     res.send("Cannot find product")
   else 
@@ -42,7 +42,7 @@ router.post("/", (request, response) => {
 
   productsDB.push(newProduct)
 
-  fs.writeFileSync("products.json", JSON.string(productsDB))
+  fs.writeFileSync("products.json", JSON.stringify(productsDB))
 
   response.send(productsDB)
 })
@@ -66,7 +66,7 @@ router.put("/:id", (req, res) => {
   // Removing previous item/product
   var newDB = productsDB.filter(x => x._id != req.params.id)
   var product = req.body
-  var product._id = req.params.id
+  var product_id = req.params.id
 
   // adding the new product
   newDB.push(product)

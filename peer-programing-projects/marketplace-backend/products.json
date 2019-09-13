@@ -1,13 +1,1 @@
-[
-  {
-        "_id": "5d318e1a8541744830bef139", //SERVER GENERATED
-        "name": "app test 1",  //REQUIRED
-        "description": "somthing longer", //REQUIRED
-        "brand": "nokia", //REQUIRED
-        "imageUrl": "https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80", //REQUIRED
-        "price": 100, //REQUIRED
-        "category": "smartphones"
-        "createdAt": "2019-07-19T09:32:10.535Z", //SERVER GENERATED
-        "updatedAt": "2019-07-19T09:32:10.535Z", //SERVER GENERATED
-    }
-]
+[{"_id":"","name":"app test 1","description":"somthing longer","brand":"nokia","imageUrl":"https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80","price":100,"category":"smartphones","createdAt":"","updatedAt":""},{"_id":"","name":"Iphone","description":"Thias is an Iphone 8","brand":"Apple","imageUrl":"https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fstore.storeimages.cdn-apple.com%2F8750%2Fas-images.apple.com%2Fis%2Fimage%2FAppleInc%2Faos%2Fpublished%2Fimages%2Fi%2Fph%2Fiphone8%2Fgallery3%2Fiphone8-gallery3-2017%3Fwid%3D2000%26hei%3D1536%26fmt%3Djpeg%26qlt%3D95%26op_sharpen%3D0%26resMode%3Dbicub%26op_usm%3D0.5%2C0.5%2C0%2C0%26iccEmbed%3D0%26layer%3Dcomp%26.v%3D1507136862165&f=1&nofb=1","price":700,"category":"smartphones","createdAt":"","updatedAt":""},{"_id":"","name":"Galaxy","description":"Thias is a Samsung","brand":"Samsung","imageUrl":"https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sammobile.com%2Fwp-content%2Fuploads%2F2019%2F08%2FGalaxy-Note-10-hands-on-review-46.jpg&f=1&nofb=1","price":640,"category":"smartphones","createdAt":"","updatedAt":""}]
