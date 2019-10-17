@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+        PICTURE ALBUM EXERCISE
+
+        Starting from the current "base" bootstrap layout, implement the following exercise:
+
+        1) When pressing on Load Images button, load the pictures from http://www.splashbase.co/api/v1/images/search?query=your query
+        2) When pressing on Load Seconday Images, load the pictures from http://www.splashbase.co/api/v1/images/search?query=your secondary query
+        3) When the user clicks on the "VIEW" button inside the Card, the image must be shown in a Modal View
+        4) The Edit button should be replace with a "Hide" button.
+        5) When the hide button is pressed, the whole picture card disappears.
+        6) Replace the "9 mins" template with the ID of the Image
+        
+        [EXTRA]
+        7) Add in the "jumbotron" a search field. If there is a value there and the user press "Load Seconday Image" the API call should use the specified query as query
+
+        8) After every button is pressed, display in an alert for 5 seconds the result of the operation (es.: 20 images loaded)
+
+
+
+        9) Handle API error gracefully using alert buttons with the message inside
+        10) Add at the bottom of the page a carousel with the images loaded by another API call
+
+        [HINT]
+        Use Template Literals to create the items in the list.
+        Use arrow functions to make some practice with them
+
+        API Docs: http://www.splashbase.co/api
+      -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <title>Album example · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <style>
+        .jumbotron {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            margin-bottom: 0;
+            background-color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .jumbotron {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+
+        .jumbotron p:last-child {
+            margin-bottom: 0;
+        }
+
+        .jumbotron-heading {
+            font-weight: 300;
+        }
+
+        .jumbotron .container {
+            max-width: 40rem;
+        }
+
+        footer {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.25rem;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        #alertmsg {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">
+                            Add some information about the album below, the author, or any
+                            other background context. Make it a few sentences long so folks
+                            can pick up some informative tidbits. Then, link them off to
+                            some social networking sites or contact information.
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                            <li><a href="#" class="text-white">Like on Facebook</a></li>
+                            <li><a href="#" class="text-white">Email me</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2"
+                        viewBox="0 0 24 24" focusable="false">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg>
+                    <strong>Album</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+
+                <!-- user query input -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Find an image:</label>
+                    <input type="email" class="form-control" id="userInput" aria-describedby="emailHelp"
+                        placeholder="Search image">
+                </div>
+
+                <h1 class="jumbotron-heading">Album API example</h1>
+                <p class="lead text-muted">
+                    This page will dynamically load pictures from the web, and display them in a cool way!
+                </p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2" id="loadImage" onclick="loadImage()">Load Images</a>
+                    <a href="#" class="btn btn-secondary my-2" id="loadImageTwo" onclick="loadISecondmage()">Load
+                        Secondary Images</a>
+                </p>
+
+                <span class="alert alert-success" id="alertmsg" role="alert">
+
+                </span>
+
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row" id="imageGallery">
+                    <!-- images card dynamically here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>
+                Album example is &copy; Bootstrap, but please download and customize
+                it for yourself!
+            </p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        function loadImage() {
+            // get the button
+            var getButtton = document.querySelector("#loadImage");
+
+            // get the image from the  splashbase API
+            fetch("http://www.splashbase.co/api/v1/images/search?query=land", {
+                method: "GET",
+
+            })
+                .then(function (respond) {
+                    if (respond.ok) {
+                        return respond.json();
+                    }
+                })
+                .then(function (data) {
+                    // console.log(data.images[0].copyright);
+                    console.log(data.images[0]);
+
+                    // get the parent element
+                    var mainGallery = document.querySelector("#imageGallery");
+                    var SearchQuery1 = "city";
+
+                    // create a loop to display images
+                    for (var i = 0; i < data.images.length; i++) {
+
+                        // fill then row with the cards
+                        mainGallery.innerHTML +=
+                            `
+                                <div class="col-md-4" id="cardSection">
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="img-fluid" src="${data.images[i].large_url}" alt="gallery image">
+                                        
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                Copy rights: ${data.images[i].copyright}
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#exampleModal1">
+                                                        View
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hideCard();">
+                                                        Hide
+                                                    </button>
+                                                </div>
+                                                <small class="text-muted">${data.images[i].id}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">An image for: ${SearchQuery1}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   <img class="img-fluid" src="${data.images[i].large_url}" alt="gallery image">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+
+                        // show an alert for 5 seconds
+                        // create alert function
+                        function tempAlert(msg, duration) {
+
+                            // get the element with the alert
+                            var elAlert = document.querySelector("#alertmsg");
+
+                            // display the hidden alert div
+                            elAlert.style.visibility = 'visible';
+
+                            // set the massage
+                            elAlert.innerHTML = msg;
+
+                            // set the time out function
+                            setTimeout(function () {
+
+                                // hide the alert
+                                elAlert.style.visibility = 'hidden';
+                            }, duration);
+
+                        }
+                        // on click load image display the msg for 5 seconds
+                        tempAlert(data.images.length + " Images found!", 5000);
+                    }
+                })
+                .catch(function (error) { });
+        }
+
+
+
+
+
+
+        function loadISecondmage() {
+            // get the button
+            var getSecondButtton = document.querySelector("#loadImageTwo");
+
+            // get input element and Value
+            var userElInput2 = document.querySelector("#userInput").value;
+
+            // concatinate it to the url
+
+            // get the image from the  splashbase API
+            fetch("http://www.splashbase.co/api/v1/images/search?query=" + userElInput2, {
+                method: "GET",
+
+            })
+                .then(function (result) {
+                    if (result.ok) {
+                        return result.json();
+                    }
+                })
+                .then(function (data) {
+                    // console.log(data.images[0].copyright);
+                    console.log(data.images[0]);
+
+                    // get the parent element
+                    var mainGal = document.querySelector("#imageGallery");
+                    var SearchQuery2 = userElInput2;
+
+                    // create a loop to display images
+                    for (var y = 0; y < data.images.length; y++) {
+
+                        // fill then row with the cards
+                        mainGal.innerHTML +=
+                            `
+                                <div class="col-md-4" id="cardSection">
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="img-fluid" src="${data.images[y].large_url}" alt="gallery image">
+
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                Copy rights: ${data.images[y].copyright}
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+                                                        View
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hideCard();">
+                                                        Hide
+                                                    </button>
+                                                </div>
+                                                <small class="text-muted">${data.images[y].id}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Images result for: ${SearchQuery2}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   <img class="img-fluid" src="${data.images[y].large_url}" alt="gallery image">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                    }
+
+
+                })
+                .catch(function (error) { });
+        }
+
+        // create a function to hide an element
+        function hideCard() {
+            // get the element to remove
+            var Elremove = document.querySelector("#cardSection");
+            // hide the element
+            Elremove.remove();
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
