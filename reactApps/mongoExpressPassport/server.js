@@ -1,20 +1,26 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const config = require("./config");
+const express = require("express")
+const mongoose = require("mongoose")
+const userRouter = require("./routes/userRouter")
+const passport = require("passport")
+const cors = require("cors")
 
-const connection = mongoose.connect(config.mongoUrl, { useNewUrlParse: true })
+const connection = mongoose.connect("mongodb+srv://diegostriveschool:h6nxg5U9SDcsLA26@cluster0-3ar0p.azure.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true })
 connection.then(db => {
   console.log("database connected")
 },
-  err => console.log(err)
-);
+  err => { console.log(err) }
+)
 
-var server = express();
+var server = express()
+server.use(cors())
+server.use(express.json())
+server.use(passport.initialize()) //ENABLE PASSPORT AT A SERVER LEVEL
 
+server.use("/users", userRouter)
 server.get("/", (req, res) => {
-  res.send("Hello world");
-});
+  res.send("hellooo")
+})
 
 server.listen(3123, () => {
-  console.log("server is running on 3123 ");
-});
+  console.log("server is running on 3123")
+})
