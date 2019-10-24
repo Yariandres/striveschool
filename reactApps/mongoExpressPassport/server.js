@@ -4,7 +4,7 @@ const userRouter = require("./routes/userRouter")
 const passport = require("passport")
 const cors = require("cors")
 
-const connection = mongoose.connect("mongodb+srv://diegostriveschool:h6nxg5U9SDcsLA26@cluster0-3ar0p.azure.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true })
+const connection = mongoose.connect("mongodb+srv://yari_striveschool:tMJ6V66Wd8wyKsvA@cluster0-gfzzk.azure.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true })
 connection.then(db => {
   console.log("database connected")
 },
@@ -14,11 +14,11 @@ connection.then(db => {
 var server = express()
 server.use(cors())
 server.use(express.json())
-server.use(passport.initialize()) //ENABLE PASSPORT AT A SERVER LEVEL
+server.use(passport.initialize())
 
 server.use("/users", userRouter)
 server.get("/", (req, res) => {
-  res.send("hellooo")
+  res.send("Hello World")
 })
 
 server.listen(3123, () => {
