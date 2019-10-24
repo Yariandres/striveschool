@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const userRouter = require("./routes/userRouter")
+const auth = require("./authenticate")
 const passport = require("passport")
 const cors = require("cors")
 
@@ -19,7 +20,11 @@ server.use(passport.initialize())
 server.use("/users", userRouter)
 server.get("/", (req, res) => {
   res.send("Hello World")
-})
+});
+
+server.get("/authenticated", auth.verifyUser, (req, res) => {
+  res.send("Hello World")
+});
 
 server.listen(3123, () => {
   console.log("server is running on 3123")

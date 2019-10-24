@@ -30,5 +30,5 @@ module.exports = {
         else
           return (null, false)  //1) user not found
       });
-    }))
+    })),
 };
