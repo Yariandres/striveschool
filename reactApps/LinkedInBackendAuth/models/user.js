@@ -2,18 +2,14 @@ const mongoose = require("mongoose")
 const passportLocalMongoose = require("passport-local-mongoose")
 
 var User = new mongoose.Schema({
-  //here we can insert extra properties
-  //_id
-  //username
-  //hash
-  //salt
+
   email: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   },
   role: {
-      type: String,
-      default: "user"
+    type: String,
+    default: "user"
   }
 })
 
