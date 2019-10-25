@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRouter");
+const passport = require("passport")
 
 const url = "mongodb+srv://yari_striveschool:tMJ6V66Wd8wyKsvA@linkedinback-gfzzk.mongodb.net/test?retryWrites=true&w=majority"
 const connection = mongoose.connect(url, { useUnifiedTopology: true });
@@ -18,6 +19,7 @@ connection.then(db => {
 var server = express();
 server.use(cors());
 server.use(express.json());
+server.use(passport.initialize());
 
 server.use("/users", userRouter);
 
